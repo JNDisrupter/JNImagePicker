@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'JNImagePicker_Example' do
+  pod 'JNImagePicker', :path => '../'
+
+  target 'JNImagePicker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
