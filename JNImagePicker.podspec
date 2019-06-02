@@ -9,37 +9,14 @@
 Pod::Spec.new do |s|
   s.name             = 'JNImagePicker'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of JNImagePicker.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/mohammadnabulsi/JNImagePicker'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.summary          = 'JNImagePicker'
+  s.description      = 'Image picker for images and viewdes'
+  s.homepage         = 'https://github.com/JNDisrupter'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'mohammadnabulsi' => 'mohammad.s.nabulsi@gmail.com' }
-  s.source           = { :git => 'https://github.com/mohammadnabulsi/JNImagePicker.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '9.3'
-
+  s.source           = { :git => 'https://github.com/JNDisrupter/JNImagePicker', :tag => s.version.to_s }
+  s.ios.deployment_target = '9.0'
   s.source_files = 'JNImagePicker/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'JNImagePicker' => ['JNImagePicker/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
-  
   s.source_files                    = 'JNImagePicker/Classes/**/*'
   s.resources                       = 'JNImagePicker/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf}'
 end

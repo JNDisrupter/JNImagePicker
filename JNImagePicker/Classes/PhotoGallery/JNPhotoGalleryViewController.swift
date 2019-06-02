@@ -202,7 +202,7 @@ class JNPhotoGalleryViewController: UIViewController {
                     selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:]))
                 } else {
                     imageSizeExceedLimit = true
-                    strongSelf.delegate?.JNPhotoGalleryViewControllerDidExceedMaximumImageSize()
+                    strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
                     strongSelf.initNavigationItem()
                     cancelImagesRequests()
                     return
@@ -214,10 +214,10 @@ class JNPhotoGalleryViewController: UIViewController {
                     })
                     
                     if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
-                        strongSelf.delegate?.JNPhotoGalleryViewControllerDidExceedMaximumImageSize()
+                        strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
                         strongSelf.initNavigationItem()
                     } else {
-                        strongSelf.delegate?.JNPhotoGalleryViewController(didSelectAssets: selectedAssets)
+                        strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
                         strongSelf.didClickCancelButton()
                     }
                 }
@@ -411,14 +411,13 @@ public protocol JNPhotoGalleryViewControllerDelegate: NSObjectProtocol {
      Did select assets
      - Parameter assets: Selected assets array
      */
-    func JNPhotoGalleryViewController(didSelectAssets assets: [JNAsset])
+    func galleryViewController(didSelectAssets assets: [JNAsset])
     
     /**
      Did Exceed Maximum image size.
      */
-    func JNPhotoGalleryViewControllerDidExceedMaximumImageSize()
+    func galleryViewControllerDidExceedMaximumImageSize()
 }
-
 
 // MARK: - UIImagePickerController, UINavigationControllerDelegate
 extension JNPhotoGalleryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -427,7 +426,29 @@ extension JNPhotoGalleryViewController: UIImagePickerControllerDelegate, UINavig
      Did finish picking media with info
      */
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String {
+            if mediaType == kUTTypeImage as String {
+                var image: UIImage?
+                
+                if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                    image = editedImage
+                } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                    image = originalImage
+                }
+                
+                if let image = image {
+                    UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
+                }
+            } else {
+                if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+                    if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoURL.path) {
+                        UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path, self, #selector(self.image(image:didFinishSavingWithError:contextInfo:)), nil)
+                    }
+                }
+            }
+        }
         
+        picker.dismiss(animated: true, completion: nil)
     }
     
     /**
@@ -435,5 +456,17 @@ extension JNPhotoGalleryViewController: UIImagePickerControllerDelegate, UINavig
      */
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     Did finish saving media
+     */
+    @objc func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        guard error == nil else {
+            return
+        }
+        
+        self.loadAssets()
+        self.collectionView.reloadData()
     }
 }

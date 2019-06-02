@@ -19,23 +19,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="201" height="151"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-ZL-Zdy">
-                        <rect key="frame" x="0.0" y="0.0" width="201" height="151"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraImage" translatesAutoresizingMaskIntoConstraints="NO" id="vL0-ZL-Zdy">
+                        <rect key="frame" x="40" y="0.5" width="121" height="150"/>
                     </imageView>
                 </subviews>
             </view>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vL0-ZL-Zdy" firstAttribute="top" secondItem="5jb-OB-02q" secondAttribute="top" id="FOQ-HP-wmy"/>
-                <constraint firstAttribute="trailing" secondItem="vL0-ZL-Zdy" secondAttribute="trailing" id="QLw-XI-0qf"/>
-                <constraint firstAttribute="bottom" secondItem="vL0-ZL-Zdy" secondAttribute="bottom" id="f5T-IX-yut"/>
-                <constraint firstItem="vL0-ZL-Zdy" firstAttribute="leading" secondItem="5jb-OB-02q" secondAttribute="leading" id="yOL-rf-esd"/>
+                <constraint firstItem="vL0-ZL-Zdy" firstAttribute="centerX" secondItem="5jb-OB-02q" secondAttribute="centerX" id="8ac-kj-JW9"/>
+                <constraint firstItem="vL0-ZL-Zdy" firstAttribute="centerY" secondItem="5jb-OB-02q" secondAttribute="centerY" id="D9M-aI-Qsx"/>
+                <constraint firstItem="vL0-ZL-Zdy" firstAttribute="width" secondItem="5jb-OB-02q" secondAttribute="width" multiplier="0.6" id="eB7-Io-fqP"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="2XS-rA-HQ2"/>
             <size key="customSize" width="201" height="151"/>
-            <connections>
-                <outlet property="imageView" destination="vL0-ZL-Zdy" id="Elf-xr-WhQ"/>
-            </connections>
             <point key="canvasLocation" x="-84.782608695652186" y="-37.834821428571423"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="CameraImage" width="160" height="150"/>
+    </resources>
 </document>

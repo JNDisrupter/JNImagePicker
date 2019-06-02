@@ -73,7 +73,7 @@ class JNPhotoGalleryViewModel {
         self.representables.removeAll()
         
         // Check if media source is both then show camera button
-        if self.sourceType == JNImagePickerViewController.SourceType.both {
+        if self.sourceType == JNImagePickerViewController.SourceType.both, AVCaptureDevice.authorizationStatus(for: AVMediaType.video) == AVAuthorizationStatus.authorized {
             self.representables.append(JNCameraCollectionViewCellRepresentable())
         }
         

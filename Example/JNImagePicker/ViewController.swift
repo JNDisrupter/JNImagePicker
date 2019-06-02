@@ -19,13 +19,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
-        let vc = JNImagePickerViewController()
-        vc.mediaType = .all
-        vc.maximumImageSize = 1
-        vc.sourceType = .both
-        vc.maximumTotalImagesSizes = 5
-        vc.maxSelectableCount = 1
-        self.present(vc, animated: true, completion: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,5 +27,27 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func dids(_ sender: Any) {
+        let vc = JNImagePickerViewController()
+        vc.mediaType = .image
+        vc.maximumImageSize = 1
+        vc.sourceType = .gallery
+        vc.maximumTotalImagesSizes = 5
+        vc.pickerDelegate = self
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
+extension ViewController: JNImagePickerViewControllerDelegate {
+    func imagePickerViewController(pickerController: JNImagePickerViewController, didSelectAssets assets: [JNAsset]) {
+        print("ssss", assets)
+    }
+    
+    func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error) {
+        print("ssss", error)
+    }
+    
+    func imagePickerViewController(didExceedMaximumImageSize pickerController: JNImagePickerViewController) {
+        print("exceed")
+    }
+}

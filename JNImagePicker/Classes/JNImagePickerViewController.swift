@@ -88,6 +88,23 @@ open class JNImagePickerViewController: UINavigationController {
             self.present(imagePickerViewController, animated: false, completion: nil)
         }
         
+        
+        func openGallery() {
+            let rootViewController = JNPhotoGalleryViewController()
+            rootViewController.maximumImageSize = self.maximumImageSize
+            rootViewController.maximumTotalImagesSizes = self.maximumTotalImagesSizes
+            rootViewController.assetGroupTypes = self.assetGroupTypes
+            rootViewController.mediaType = self.mediaType
+            rootViewController.sourceType = self.sourceType
+            rootViewController.singleSelect = self.singleSelect
+            rootViewController.maxSelectableCount = self.maxSelectableCount
+            rootViewController.defaultSelectedAssets = self.defaultSelectedAssets
+            rootViewController.allowEditing = self.allowEditing
+            rootViewController.delegate = self
+            
+            self.setViewControllers([rootViewController], animated: false)
+        }
+        
         // Check if camera then open camera
         if self.sourceType == .camera {
             self.setNavigationBarHidden(true, animated: false)
@@ -114,19 +131,16 @@ open class JNImagePickerViewController: UINavigationController {
             
             // Check permission
             JNAssetsManager.checkGalleryPermission { (granted) in
-                DispatchQueue.main.async {
-                    let rootViewController = JNPhotoGalleryViewController()
-                    rootViewController.maximumImageSize = self.maximumImageSize
-                    rootViewController.maximumTotalImagesSizes = self.maximumTotalImagesSizes
-                    rootViewController.assetGroupTypes = self.assetGroupTypes
-                    rootViewController.mediaType = self.mediaType
-                    rootViewController.sourceType = self.sourceType
-                    rootViewController.singleSelect = self.singleSelect
-                    rootViewController.maxSelectableCount = self.maxSelectableCount
-                    rootViewController.defaultSelectedAssets = self.defaultSelectedAssets
-                    rootViewController.allowEditing = self.allowEditing
-                    
-                    self.setViewControllers([rootViewController], animated: false)
+                if self.sourceType == SourceType.both {
+                    JNAssetsManager.checkCameraPermission { (granted) in
+                        DispatchQueue.main.async {
+                            openGallery()
+                        }
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        openGallery()
+                    }
                 }
             }
         }
@@ -142,10 +156,17 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String {
             if mediaType == kUTTypeImage as String {
-                if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                var image: UIImage?
+                
+                if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+                    image = editedImage
+                } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                    image = originalImage
+                }
+                
+                if let image = image {
                     let jnAsset = JNAsset(image: image)
-                    self.pickerDelegate?.imagePickerViewController(didSelectAssets: [jnAsset])
-                    self.imagePickerControllerDidCancel(picker)
+                    self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
                 }
             } else {
                 if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
@@ -160,12 +181,10 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
                                     var jnAsset = JNAsset(originalAsset: newAsset)
                                     do { jnAsset.assetData = try Data(contentsOf: videoURL) } catch { }
                                     
-                                    self.pickerDelegate?.imagePickerViewController(didSelectAssets: [jnAsset])
-                                    self.imagePickerControllerDidCancel(picker)
+                                    self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
                                 }
                             } else {
-                                self.pickerDelegate?.imagePickerViewController(failedToSelectAsset: error!)
-                                self.imagePickerControllerDidCancel(picker)
+                                self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: error!)
                             }
                         }
                     }
@@ -178,8 +197,28 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
      Image Picker Controller Did Cancel
      */
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.pickerDelegate?.imagePickerViewControllerDidCancelPicker()
         picker.dismiss(animated: false, completion: nil)
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - JNPhotoGalleryViewControllerDelegate
+extension JNImagePickerViewController: JNPhotoGalleryViewControllerDelegate {
+    
+    /**
+     Did select assets
+     - Parameter assets: Selected assets array
+     */
+    public func galleryViewController(didSelectAssets assets: [JNAsset]) {
+        self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: assets)
+    }
+    
+    /**
+     Did Exceed Maximum image size.
+     */
+    public func galleryViewControllerDidExceedMaximumImageSize() {
+        self.pickerDelegate?.imagePickerViewController(didExceedMaximumImageSize: self)
     }
 }
 
@@ -188,13 +227,26 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
  
     /**
      Did select assets
+     - Parameter pickerController: The picker controller object.
      - Parameter assets: Array of selected assets.
      */
-    func imagePickerViewController(didSelectAssets assets: [JNAsset])
+    func imagePickerViewController(pickerController: JNImagePickerViewController, didSelectAssets assets: [JNAsset])
     
     /**
      Failed to select assets.
+     - Parameter pickerController: The picker controller object.
      - Parameter error: The error for failed to select.
      */
-    func imagePickerViewController(failedToSelectAsset error: Error)
+    func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error)
+    
+    /**
+     Did Exceed Maximum image size.
+     - Parameter pickerController: The picker controller object.
+     */
+    func imagePickerViewController(didExceedMaximumImageSize pickerController: JNImagePickerViewController)
+    
+    /**
+     Did cancel picker.
+     */
+    func imagePickerViewControllerDidCancelPicker()
 }
