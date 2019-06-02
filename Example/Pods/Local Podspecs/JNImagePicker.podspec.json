@@ -1,0 +1,23 @@
+{
+  "name": "JNImagePicker",
+  "version": "0.1.0",
+  "summary": "A short description of JNImagePicker.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/mohammadnabulsi/JNImagePicker",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "mohammadnabulsi": "mohammad.s.nabulsi@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/mohammadnabulsi/JNImagePicker.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.3"
+  },
+  "source_files": "JNImagePicker/Classes/**/*",
+  "resources": "JNImagePicker/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf}"
+}

@@ -1,0 +1,16 @@
+PODS:
+  - JNImagePicker (0.1.0)
+
+DEPENDENCIES:
+  - JNImagePicker (from `../`)
+
+EXTERNAL SOURCES:
+  JNImagePicker:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  JNImagePicker: 1e30d56937315ee20893364714161a193d1b455f
+
+PODFILE CHECKSUM: 227c8e01c4aee58742ff2fae28ba233d81ac9043
+
+COCOAPODS: 1.6.1
