@@ -39,6 +39,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: JNImagePickerViewControllerDelegate {
+    func imagePickerViewControllerDidCancelPicker() {
+        print("cancel")
+    }
+    
     func imagePickerViewController(pickerController: JNImagePickerViewController, didSelectAssets assets: [JNAsset]) {
         print("ssss", assets)
     }

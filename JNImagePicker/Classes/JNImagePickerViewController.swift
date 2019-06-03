@@ -105,6 +105,9 @@ open class JNImagePickerViewController: UINavigationController {
             self.setViewControllers([rootViewController], animated: false)
         }
         
+        // Set default view controller
+        self.setViewControllers([DefaultViewController()], animated: false)
+        
         // Check if camera then open camera
         if self.sourceType == .camera {
             self.setNavigationBarHidden(true, animated: false)
@@ -131,15 +134,19 @@ open class JNImagePickerViewController: UINavigationController {
             
             // Check permission
             JNAssetsManager.checkGalleryPermission { (granted) in
-                if self.sourceType == SourceType.both {
-                    JNAssetsManager.checkCameraPermission { (granted) in
+                if granted {
+                    if self.sourceType == SourceType.both {
+                        JNAssetsManager.checkCameraPermission { (granted) in
+                            if granted {
+                                DispatchQueue.main.async {
+                                    openGallery()
+                                }
+                            }
+                        }
+                    } else {
                         DispatchQueue.main.async {
                             openGallery()
                         }
-                    }
-                } else {
-                    DispatchQueue.main.async {
-                        openGallery()
                     }
                 }
             }
@@ -249,4 +256,31 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
      Did cancel picker.
      */
     func imagePickerViewControllerDidCancelPicker()
+}
+
+/// Default view controller
+class DefaultViewController: UIViewController {
+    
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Init navigation ietm
+        self.initNavigationItem()
+    }
+    
+    // MARK: - Navigation item
+    
+    /**
+     Init navigation item
+     */
+    private func initNavigationItem() {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(self.didClickCancelButton))
+    }
+    
+    /**
+     Did click cancel button
+     */
+    @objc private func didClickCancelButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

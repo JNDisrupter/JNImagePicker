@@ -21,11 +21,7 @@ class JNAssetsManager {
         } else {
             if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.notDetermined {
                 PHPhotoLibrary.requestAuthorization { (status) in
-                    if status == PHAuthorizationStatus.authorized {
-                        completion(true)
-                    } else {
-                        completion(true)
-                    }
+                    completion(status == PHAuthorizationStatus.authorized)
                 }
             } else {
                 completion(false)

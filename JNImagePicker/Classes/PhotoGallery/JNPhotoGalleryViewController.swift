@@ -152,7 +152,25 @@ class JNPhotoGalleryViewController: UIViewController {
      */
     private func initNavigationItem() {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(self.didClickCancelButton))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.didClickDoneButton))
+        
+        // Setup right bar button item
+        self.setupRightBarButtonItem()
+    }
+   
+    /**
+     Setup right bar button item
+     */
+    private func setupRightBarButtonItem() {
+        
+        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.didClickDoneButton))
+        let numberOFAssetsNumberButton = UIBarButtonItem(title: "(" + self.viewModel.selectedAssets.count.description + ")", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
+        
+        if self.viewModel.selectedAssets.isEmpty {
+            rightBarButtonItem.isEnabled = false
+            numberOFAssetsNumberButton.isEnabled = false
+        }
+        
+        self.navigationItem.rightBarButtonItems = [rightBarButtonItem, numberOFAssetsNumberButton]
     }
     
     /**
@@ -394,6 +412,9 @@ extension JNPhotoGalleryViewController: UICollectionViewDelegate {
         }
         
         self.viewModel.selectItem(at: indexPath)
+        
+        // Setup right bar button item
+        self.setupRightBarButtonItem()
     }
     
     /**
@@ -401,6 +422,9 @@ extension JNPhotoGalleryViewController: UICollectionViewDelegate {
      */
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         self.viewModel.deselectItem(at: indexPath)
+        
+        // Setup right bar button item
+        self.setupRightBarButtonItem()
     }
 }
 
