@@ -73,6 +73,7 @@ open class JNImagePickerViewController: UINavigationController {
      */
     private func setupRootViewController() {
         func openCamera() {
+            self.setNavigationBarHidden(true, animated: false)
             let imagePickerViewController = UIImagePickerController()
             imagePickerViewController.delegate = self
             imagePickerViewController.sourceType = .camera
@@ -85,11 +86,25 @@ open class JNImagePickerViewController: UINavigationController {
             }
             
             imagePickerViewController.allowsEditing = self.allowEditing
-            self.present(imagePickerViewController, animated: false, completion: nil)
+            
+            // First, add the view of the child to the view of the parent
+            self.view.addSubview(imagePickerViewController.view)
+            imagePickerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            imagePickerViewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+            imagePickerViewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            imagePickerViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+            imagePickerViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+            
+            // Then, add the child to the parent
+            self.addChild(imagePickerViewController)
+            
+            // Finally, notify the child that it was moved to a parent
+            imagePickerViewController.didMove(toParent: self)
         }
         
-        
         func openGallery() {
+            self.setNavigationBarHidden(false, animated: false)
             let rootViewController = JNPhotoGalleryViewController()
             rootViewController.maximumImageSize = self.maximumImageSize
             rootViewController.maximumTotalImagesSizes = self.maximumTotalImagesSizes
@@ -205,7 +220,6 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
      */
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.pickerDelegate?.imagePickerViewControllerDidCancelPicker()
-        picker.dismiss(animated: false, completion: nil)
         self.dismiss(animated: true, completion: nil)
     }
 }
