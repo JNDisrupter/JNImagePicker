@@ -11,7 +11,7 @@ import MobileCoreServices
 
 /// JNPhoto Gallery View Controller
 class JNPhotoGalleryViewController: UIViewController {
-
+    
     /// Select Asset Collection Button
     public lazy var selectAssetCollectionButton: UIButton = {
         let button = UIButton()
@@ -156,7 +156,7 @@ class JNPhotoGalleryViewController: UIViewController {
         // Setup right bar button item
         self.setupRightBarButtonItem()
     }
-   
+    
     /**
      Setup right bar button item
      */
@@ -170,7 +170,11 @@ class JNPhotoGalleryViewController: UIViewController {
             numberOFAssetsNumberButton.isEnabled = false
         }
         
-        self.navigationItem.rightBarButtonItems = [rightBarButtonItem, numberOFAssetsNumberButton]
+        if self.singleSelect {
+            self.navigationItem.rightBarButtonItems = [rightBarButtonItem]
+        } else {
+            self.navigationItem.rightBarButtonItems = [rightBarButtonItem, numberOFAssetsNumberButton]
+        }
     }
     
     /**
@@ -186,7 +190,7 @@ class JNPhotoGalleryViewController: UIViewController {
     @objc private func didClickDoneButton() {
         let loadingView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         loadingView.startAnimating()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: loadingView)
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: loadingView)]
         
         var selectedAssets: [JNAsset] = []
         var imagesRequests: [PHImageRequestID] = []
@@ -211,7 +215,7 @@ class JNPhotoGalleryViewController: UIViewController {
         }
         
         for asset in assets {
-           let imageRequestID = PHImageManager.default().requestImageData(for: asset, options: nil) { [weak self] (data, string, imageOrientation, info) in
+            let imageRequestID = PHImageManager.default().requestImageData(for: asset, options: nil) { [weak self] (data, string, imageOrientation, info) in
                 
                 guard let strongSelf = self, !imageSizeExceedLimit else { return }
                 
@@ -221,7 +225,10 @@ class JNPhotoGalleryViewController: UIViewController {
                 } else {
                     imageSizeExceedLimit = true
                     strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
-                    strongSelf.initNavigationItem()
+                    
+                    // Setup right bar button item
+                    strongSelf.setupRightBarButtonItem()
+                    
                     cancelImagesRequests()
                     return
                 }
@@ -233,7 +240,9 @@ class JNPhotoGalleryViewController: UIViewController {
                     
                     if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
                         strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
-                        strongSelf.initNavigationItem()
+                        
+                        // Setup right bar button item
+                        strongSelf.setupRightBarButtonItem()
                     } else {
                         strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
                         strongSelf.didClickCancelButton()
@@ -333,7 +342,8 @@ extension JNPhotoGalleryViewController: UICollectionViewDataSource {
             representable.cellSize = itemSize
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: representable.reuseIdentifier, for: indexPath) as? JNImageCollectionViewCell
-            cell?.setup(representable: representable)
+            cell?.setup(representable: representable, indexPath: indexPath)
+            cell?.delegate = self
             
             return cell!
         }
@@ -350,6 +360,21 @@ extension JNPhotoGalleryViewController: UICollectionViewDataSource {
     }
 }
 
+/// JNPhoto Gallery View Controller Delegate
+public protocol JNPhotoGalleryViewControllerDelegate: NSObjectProtocol {
+    
+    /**
+     Did select assets
+     - Parameter assets: Selected assets array
+     */
+    func galleryViewController(didSelectAssets assets: [JNAsset])
+    
+    /**
+     Did Exceed Maximum image size.
+     */
+    func galleryViewControllerDidExceedMaximumImageSize()
+}
+
 // MARK: - UICollectionViewDelegate
 extension JNPhotoGalleryViewController: UICollectionViewDelegate {
     
@@ -360,12 +385,8 @@ extension JNPhotoGalleryViewController: UICollectionViewDelegate {
         if self.viewModel.representableForItem(at: indexPath) is JNCameraCollectionViewCellRepresentable {
             return true
         }
-
-        if !self.singleSelect, self.viewModel.selectedAssets.count >= self.maxSelectableCount {
-            return false
-        }
         
-        return true
+        return false
     }
     
     /**
@@ -410,37 +431,94 @@ extension JNPhotoGalleryViewController: UICollectionViewDelegate {
             }
             return
         }
-        
-        self.viewModel.selectItem(at: indexPath)
-        
-        // Setup right bar button item
-        self.setupRightBarButtonItem()
-    }
-    
-    /**
-     Did deselect item at index
-     */
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        self.viewModel.deselectItem(at: indexPath)
-        
-        // Setup right bar button item
-        self.setupRightBarButtonItem()
     }
 }
 
-/// JNPhoto Gallery View Controller Delegate
-public protocol JNPhotoGalleryViewControllerDelegate: NSObjectProtocol {
+// MARK: - JNImageCollectionViewCellDelegate
+extension JNPhotoGalleryViewController: JNImageCollectionViewCellDelegate {
     
     /**
-     Did select assets
-     - Parameter assets: Selected assets array
+     Did select cell at index path
+     - Parameter indexPath: Cell index path
      */
-    func galleryViewController(didSelectAssets assets: [JNAsset])
-    
-    /**
-     Did Exceed Maximum image size.
-     */
-    func galleryViewControllerDidExceedMaximumImageSize()
+    func imageCollectionViewCell(didSelectCell indexPath: IndexPath) {
+        
+        if let representable = self.viewModel.representableForItem(at: indexPath) as? JNCameraCollectionViewCellRepresentable {
+            
+            func openCamera() {
+                let imagePickerViewController = UIImagePickerController()
+                imagePickerViewController.delegate = self
+                imagePickerViewController.sourceType = .camera
+                if self.mediaType == JNImagePickerViewController.MediaType.all {
+                    imagePickerViewController.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+                } else if self.mediaType == JNImagePickerViewController.MediaType.image {
+                    imagePickerViewController.mediaTypes = [kUTTypeImage as String]
+                } else {
+                    imagePickerViewController.mediaTypes = [kUTTypeMovie as String]
+                }
+                
+                imagePickerViewController.allowsEditing = self.allowEditing
+                self.present(imagePickerViewController, animated: true, completion: nil)
+            }
+            
+            // Check permission
+            JNAssetsManager.checkCameraPermission { (granted) in
+                if granted {
+                    if self.mediaType == JNImagePickerViewController.MediaType.video {
+                        JNAssetsManager.checkGalleryPermission { (granted) in
+                            if granted {
+                                DispatchQueue.main.async {
+                                    openCamera()
+                                }
+                            }
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            openCamera()
+                        }
+                    }
+                }
+            }
+            
+            return
+        }
+        
+        
+        if !self.singleSelect, self.viewModel.selectedAssets.count >= self.maxSelectableCount {
+            return
+        }
+        
+        // Check if single select
+        if self.singleSelect {
+            let selectedItemIndexPath = self.viewModel.selectedItemsIndexPaths().first
+            self.viewModel.selectItem(at: indexPath)
+            
+            // Reload cell
+            if let selectedItemIndexPath = selectedItemIndexPath, let cell = collectionView.cellForItem(at: selectedItemIndexPath) as? JNImageCollectionViewCell {
+                if let representable = self.viewModel.representableForItem(at: selectedItemIndexPath) as? JNImageCollectionViewCellRepresentable {
+                    cell.setup(representable: representable, indexPath: selectedItemIndexPath)
+                }
+            }
+        } else {
+            
+            // Check if item selected
+            if self.viewModel.isItemSelected(at: indexPath) {
+                self.viewModel.deselectItem(at: indexPath)
+            } else {
+                self.viewModel.selectItem(at: indexPath)
+            }
+        }
+        
+        // Reload cell
+        if let cell = collectionView.cellForItem(at: indexPath) as? JNImageCollectionViewCell {
+            if let representable = self.viewModel.representableForItem(at: indexPath) as? JNImageCollectionViewCellRepresentable {
+                cell.setup(representable: representable, indexPath: indexPath)
+            }
+        }
+        
+        // Setup right bar button item
+        self.setupRightBarButtonItem()
+    }
 }
 
 // MARK: - UIImagePickerController, UINavigationControllerDelegate

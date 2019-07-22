@@ -113,6 +113,11 @@ class JNPhotoGalleryViewModel {
     func selectItem(at indexPath: IndexPath) {
         if let representable = self.representableForItem(at: indexPath) as? JNImageCollectionViewCellRepresentable, let asset = representable.asset {
             if self.singleSelect {
+                if let selectedItemIndexPath = self.selectedItemsIndexPaths().first {
+                    if let representable = self.representableForItem(at: selectedItemIndexPath) as? JNImageCollectionViewCellRepresentable {
+                        representable.isSelected = false
+                    }
+                }
                 self.selectedAssets = [asset]
             } else {
                 self.selectedAssets.insert(asset)
@@ -120,6 +125,19 @@ class JNPhotoGalleryViewModel {
             
             representable.isSelected = true
         }
+    }
+    
+    /**
+     Return if item is selected
+     - Parameter indexPath: Index path.
+     - Returns: Bool to indicate if selected.
+     */
+    func isItemSelected(at indexPath: IndexPath) -> Bool {
+        if let representable = self.representableForItem(at: indexPath) as? JNImageCollectionViewCellRepresentable, let asset = representable.asset {
+            return self.selectedAssets.contains(asset)
+        }
+        
+        return false
     }
     
     /**
@@ -131,5 +149,21 @@ class JNPhotoGalleryViewModel {
             self.selectedAssets.remove(asset)
             representable.isSelected = false
         }
+    }
+    
+    /**
+     Get index paths for selected items
+     - Returns: Selected itme index paths
+     */
+    func selectedItemsIndexPaths() -> [IndexPath] {
+        var indexPaths: [IndexPath]  = []
+        
+        for (index, item) in (self.representables as? [JNImageCollectionViewCellRepresentable] ?? []).enumerated() {
+            if item.isSelected {
+                indexPaths.append(IndexPath(row: index, section: 0))
+            }
+        }
+        
+        return indexPaths
     }
 }

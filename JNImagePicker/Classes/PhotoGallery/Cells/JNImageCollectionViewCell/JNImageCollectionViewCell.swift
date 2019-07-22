@@ -20,12 +20,11 @@ class JNImageCollectionViewCell: UICollectionViewCell {
     /// Duration Label
     @IBOutlet private weak var durationLabel: UILabel!
     
-    /// Is Selected
-    override var isSelected: Bool {
-        didSet {
-            self.selectedContainerView.isHidden = !self.isSelected
-        }
-    }
+    /// Index path
+    private var indexPath: IndexPath!
+    
+    /// Delegate
+    weak var delegate: JNImageCollectionViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,13 +32,19 @@ class JNImageCollectionViewCell: UICollectionViewCell {
         self.imageView.contentMode = UIView.ContentMode.scaleAspectFill
         self.backgroundColor = UIColor.white
         self.contentView.backgroundColor = UIColor.white
+        
+        // Add tap gesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didSelectCell))
+        self.addGestureRecognizer(tapGesture)
     }
     
     /**
      Setup cell with representable
+     - Parameter representable: Cell representable.
+     - Parameter indexPath: Index path.
      */
-    func setup(representable: JNImageCollectionViewCellRepresentable) {
-        self.isSelected = representable.isSelected
+    func setup(representable: JNImageCollectionViewCellRepresentable, indexPath: IndexPath) {
+        self.indexPath = indexPath
         self.selectedContainerView.isHidden = !representable.isSelected
         self.imageView.setImage(asset: representable.asset!, size: representable.cellSize)
         
@@ -58,6 +63,13 @@ class JNImageCollectionViewCell: UICollectionViewCell {
         } else {
             self.durationLabel.text = ""
         }
+    }
+    
+    /**
+     Did select cell
+     */
+    @objc private func didSelectCell() {
+        self.delegate?.imageCollectionViewCell(didSelectCell: self.indexPath)
     }
     
     // MARK: - Class methods
@@ -96,10 +108,10 @@ extension UIImageView {
             
             // Check if asset matches asset
             if strongSelf.accessibilityLabel == asset.localIdentifier {
-            
+                
                 // Set image
                 strongSelf.image = image
-            
+                
                 // Hide loading indicator
                 strongSelf.hideLoadingIndicator()
             }
@@ -128,4 +140,14 @@ extension UIImageView {
     func hideLoadingIndicator() {
         self.viewWithTag(404)?.removeFromSuperview()
     }
+}
+
+/// JNImage Collection View Cell Delegate
+protocol JNImageCollectionViewCellDelegate: NSObjectProtocol {
+    
+    /**
+     Did select cell at index path
+     - Parameter indexPath: Cell index path
+     */
+    func imageCollectionViewCell(didSelectCell indexPath: IndexPath)
 }
