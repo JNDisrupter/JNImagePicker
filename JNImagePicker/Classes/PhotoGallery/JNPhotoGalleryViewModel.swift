@@ -159,8 +159,11 @@ class JNPhotoGalleryViewModel {
         var indexPaths: [IndexPath]  = []
         var representables = self.representables
         
+        // Is first representable camera
+        let isFirstRepresentableCamera: Bool = self.representables.first is JNCameraCollectionViewCellRepresentable
+        
         // Remove camera option
-        if self.representables.first is JNCameraCollectionViewCellRepresentable {
+        if isFirstRepresentableCamera {
             representables.remove(at: 0)
         }
         
@@ -169,7 +172,8 @@ class JNPhotoGalleryViewModel {
             
             // Filter selected items
             for (index, item) in imageReprsentables.enumerated() where item.isSelected {
-                indexPaths.append(IndexPath(row: index, section: 0))
+                let row = index + (isFirstRepresentableCamera ? 1 : 0)
+                indexPaths.append(IndexPath(row: row, section: 0))
             }
         }
         
