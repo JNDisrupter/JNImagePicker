@@ -4,7 +4,6 @@
 //
 //  Created by Mohammad Nabulsi on 5/13/19.
 //
-
 import Foundation
 import UIKit
 import Photos
@@ -37,7 +36,8 @@ open class JNImagePickerViewController: UINavigationController {
     public var assetGroupTypes: [PHAssetCollectionSubtype] = [
         .smartAlbumUserLibrary,
         .smartAlbumFavorites,
-        .albumRegular
+        .albumRegular,
+        .albumCloudShared
     ]
     
     /// The type of picker interface to be displayed by the controller.
@@ -57,6 +57,12 @@ open class JNImagePickerViewController: UINavigationController {
     
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
+    
+    /// Image Deleviry mode
+    public var imageDeliveryMode: PHImageRequestOptionsDeliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
+    
+    /// Video Deleviry mode
+    public var videoDeliveryMode: PHVideoRequestOptionsDeliveryMode = PHVideoRequestOptionsDeliveryMode.highQualityFormat
     
     /// Picker delegate
     public weak var pickerDelegate: JNImagePickerViewControllerDelegate?
@@ -115,6 +121,8 @@ open class JNImagePickerViewController: UINavigationController {
             rootViewController.maxSelectableCount = self.maxSelectableCount
             rootViewController.defaultSelectedAssets = self.defaultSelectedAssets
             rootViewController.allowEditing = self.allowEditing
+            rootViewController.videoDeliveryMode = self.videoDeliveryMode
+            rootViewController.imageDeliveryMode = self.imageDeliveryMode
             rootViewController.delegate = self
             
             self.setViewControllers([rootViewController], animated: false)
@@ -176,36 +184,83 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
      Did finish picking media with info
      */
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // Get media type
         if let mediaType = info[UIImagePickerController.InfoKey.mediaType] as? String {
+            
+            // Image
             if mediaType == kUTTypeImage as String {
                 var image: UIImage?
                 
+                // Set edited image
                 if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
                     image = editedImage
+                    
+                    // Set original image
                 } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                     image = originalImage
                 }
                 
-                if let image = image {
-                    let jnAsset = JNAsset(image: image)
-                    self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
+                // Get asset extension
+                var assetExtension = "jpg"
+                
+                if #available(iOS 11.0, *) {
+                    if let mediaExtension = (info[UIImagePickerController.InfoKey.imageURL] as? URL)?.pathExtension {
+                        assetExtension = mediaExtension
+                    }
+                } else {
+                    if let mediaExtension = (info[UIImagePickerController.InfoKey.referenceURL] as? URL)?.pathExtension {
+                        assetExtension = mediaExtension
+                    }
                 }
+                
+                // Add image to assets
+                if let image = image {
+                    let jnAsset = JNAsset(image: image, assetExtension: assetExtension)
+                    self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
+                } else {
+                    
+                    // Failed to selecte asset
+                    self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: nil)
+                }
+                
+                // Vide type
             } else {
+                
+                // Video url
                 if let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL {
+                    
+                    // New video identifier
                     var newVideoIdentifier: String!
+                    
+                    // Perform changes
                     PHPhotoLibrary.shared().performChanges({
+                        
+                        // Create asset from video url
                         let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoURL)
                         newVideoIdentifier = assetRequest?.placeholderForCreatedAsset?.localIdentifier
                     }) { (success, error) in
+                        
                         DispatchQueue.main.async() {
+                            
                             if success {
+                                
+                                // Fetch asset
                                 if let newAsset = PHAsset.fetchAssets(withLocalIdentifiers: [newVideoIdentifier], options: nil).firstObject {
-                                    var jnAsset = JNAsset(originalAsset: newAsset)
+                                    
+                                    // Get video extension
+                                    let assetExtension = videoURL.pathExtension.lowercased()
+                                    
+                                    // Create JNAsset
+                                    var jnAsset = JNAsset(originalAsset: newAsset, assetExtension: assetExtension)
                                     do { jnAsset.assetData = try Data(contentsOf: videoURL) } catch { }
                                     
+                                    // Did select asset
                                     self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
                                 }
                             } else {
+                                
+                                // Failed to selecte asset
                                 self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: error!)
                             }
                         }
@@ -228,7 +283,7 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
 extension JNImagePickerViewController: JNPhotoGalleryViewControllerDelegate {
     
     /**
-     Did select assets
+     Did select assets\
      - Parameter assets: Selected assets array
      */
     public func galleryViewController(didSelectAssets assets: [JNAsset]) {
@@ -258,7 +313,7 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
      - Parameter pickerController: The picker controller object.
      - Parameter error: The error for failed to select.
      */
-    func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error)
+    func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error?)
     
     /**
      Did Exceed Maximum image size.

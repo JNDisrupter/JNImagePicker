@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import MobileCoreServices
+import AVKit
 
 /// JNPhoto Gallery View Controller
 class JNPhotoGalleryViewController: UIViewController {
@@ -64,6 +65,12 @@ class JNPhotoGalleryViewController: UIViewController {
     
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
+    
+    /// Video delivery mode
+    public var videoDeliveryMode: PHVideoRequestOptionsDeliveryMode = PHVideoRequestOptionsDeliveryMode.highQualityFormat
+    
+    /// Image delivery mode
+    public  var imageDeliveryMode: PHImageRequestOptionsDeliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
     
     /// Delegate
     public weak var delegate: JNPhotoGalleryViewControllerDelegate?
@@ -128,7 +135,6 @@ class JNPhotoGalleryViewController: UIViewController {
         self.collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: JNPhotoGalleryCollectionViewLayout())
         self.collectionView.backgroundColor = UIColor.white
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.collectionView.allowsMultipleSelection = true
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         self.collectionView.allowsMultipleSelection = !self.singleSelect
@@ -188,15 +194,12 @@ class JNPhotoGalleryViewController: UIViewController {
      Did click done button
      */
     @objc private func didClickDoneButton() {
-        let loadingView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
-        loadingView.startAnimating()
-        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: loadingView)]
         
-        var selectedAssets: [JNAsset] = []
-        var imagesRequests: [PHImageRequestID] = []
-        let assets = self.viewModel.selectedAssets
-        var imageSizeExceedLimit = false
-        
+        /**
+         Is image size valid
+         - Parameter image data: Image data
+         - Returns: Boolean to indicate image data is with valid size
+         */
         func isImageSizeValid(_ imageData: Data?) -> Bool {
             guard let imageData = imageData else { return false }
             
@@ -208,49 +211,127 @@ class JNPhotoGalleryViewController: UIViewController {
             return true
         }
         
-        func cancelImagesRequests() {
-            for request in imagesRequests {
+        /**
+         Cancel images requests
+         - Parameter  imageRequests: Image requests
+         */
+        func cancelImagesRequests(imageRequests: [PHImageRequestID]) {
+            for request in imageRequests {
                 PHImageManager.default().cancelImageRequest(request)
             }
         }
         
+        // Loading view
+        let loadingView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+        loadingView.startAnimating()
+        self.navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: loadingView)]
+        
+        // Selected assets
+        var selectedAssets: [JNAsset] = []
+        var imagesRequests: [PHImageRequestID] = []
+        let assets = self.viewModel.selectedAssets
+        var imageSizeExceedLimit = false
+        
+        // Image options
+        let imageOptions = PHImageRequestOptions()
+        imageOptions.deliveryMode = self.imageDeliveryMode
+        
+        // Video delivery mode
+        let videoOptions = PHVideoRequestOptions()
+        videoOptions.deliveryMode = self.videoDeliveryMode
+        
         for asset in assets {
-            let imageRequestID = PHImageManager.default().requestImageData(for: asset, options: nil) { [weak self] (data, string, imageOrientation, info) in
+            
+            if asset.mediaType == PHAssetMediaType.image {
                 
-                guard let strongSelf = self, !imageSizeExceedLimit else { return }
-                
-                // Check if image size is valid
-                if isImageSizeValid(data) {
-                    selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:]))
-                } else {
-                    imageSizeExceedLimit = true
-                    strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                let imageRequestID = PHImageManager.default().requestImageData(for: asset, options: imageOptions) { [weak self] (data, string, imageOrientation, info) in
                     
-                    // Setup right bar button item
-                    strongSelf.setupRightBarButtonItem()
+                    guard let strongSelf = self, !imageSizeExceedLimit else {
+                        
+                        // Setup right bar button item
+                        self?.setupRightBarButtonItem()
+                        return
+                    }
                     
-                    cancelImagesRequests()
-                    return
-                }
-                
-                if selectedAssets.count == assets.count {
-                    let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
-                        result + (asset.assetData?.count ?? 0)
-                    })
-                    
-                    if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
+                    // Check if image size is valid
+                    if isImageSizeValid(data) {
+                        selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:], assetExtension: "jpg"))
+                    } else {
+                        imageSizeExceedLimit = true
                         strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
                         
                         // Setup right bar button item
                         strongSelf.setupRightBarButtonItem()
-                    } else {
-                        strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
-                        strongSelf.didClickCancelButton()
+                        
+                        cancelImagesRequests(imageRequests: imagesRequests)
+                        return
+                    }
+                    
+                    // Check total max image size
+                    if selectedAssets.count == assets.count {
+                        let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
+                            result + (asset.assetData?.count ?? 0)
+                        })
+                        
+                        if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
+                            strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                            
+                            // Setup right bar button item
+                            strongSelf.setupRightBarButtonItem()
+                        } else {
+                            strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
+                            strongSelf.didClickCancelButton()
+                        }
                     }
                 }
+                imagesRequests.append(imageRequestID)
+            } else {
+                
+                let imageRequestID = PHImageManager().requestAVAsset(forVideo: asset, options: videoOptions) { [weak self] (avasset, mix, info) in
+                    
+                    guard let strongSelf = self, let avasset = avasset as? AVURLAsset else {
+                        self?.setupRightBarButtonItem()
+                        return
+                    }
+                    
+                    DispatchQueue.main.async {
+                        
+                        let data = try? Data(contentsOf: avasset.url)
+                        
+                        // Check if image size is valid
+                        if isImageSizeValid(data) {
+                            selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:], assetExtension: avasset.url.pathExtension.lowercased()))
+                        } else {
+                            imageSizeExceedLimit = true
+                            strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                            
+                            // Setup right bar button item
+                            strongSelf.setupRightBarButtonItem()
+                            
+                            cancelImagesRequests(imageRequests: imagesRequests)
+                            return
+                        }
+                        
+                        // Check total max image size
+                        if selectedAssets.count == assets.count {
+                            let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
+                                result + (asset.assetData?.count ?? 0)
+                            })
+                            
+                            if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
+                                strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                                
+                                // Setup right bar button item
+                                strongSelf.setupRightBarButtonItem()
+                            } else {
+                                strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
+                                strongSelf.didClickCancelButton()
+                            }
+                        }
+                    }
+                }
+                imagesRequests.append(imageRequestID)
             }
-            
-            imagesRequests.append(imageRequestID)
         }
     }
     
