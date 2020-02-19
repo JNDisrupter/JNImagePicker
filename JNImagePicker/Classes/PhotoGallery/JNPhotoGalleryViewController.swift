@@ -27,6 +27,9 @@ class JNPhotoGalleryViewController: UIViewController {
     /// Collection view
     internal var collectionView: UICollectionView!
     
+    /// Loading view
+    internal var loadingView: UIView!
+    
     /// Assets manager
     private var assetsManager: JNAssetsManager!
     
@@ -88,6 +91,9 @@ class JNPhotoGalleryViewController: UIViewController {
         // Init view model
         self.viewModel = JNPhotoGalleryViewModel(singleSelect: self.singleSelect, maxSelectableCount: self.maxSelectableCount, sourceType: sourceType)
         self.viewModel.setSelectedAssets(self.defaultSelectedAssets ?? [])
+        
+        // Init loading view
+        self.initLoadingView()
         
         // Load assets
         self.loadAssets()
@@ -235,10 +241,15 @@ class JNPhotoGalleryViewController: UIViewController {
         // Image options
         let imageOptions = PHImageRequestOptions()
         imageOptions.deliveryMode = self.imageDeliveryMode
+        imageOptions.isNetworkAccessAllowed = true
         
         // Video delivery mode
         let videoOptions = PHVideoRequestOptions()
         videoOptions.deliveryMode = self.videoDeliveryMode
+        videoOptions.isNetworkAccessAllowed = true
+        
+        // Show Loading View
+        self.showHideLoadingView(true)
         
         for asset in assets {
             
@@ -248,39 +259,49 @@ class JNPhotoGalleryViewController: UIViewController {
                     
                     guard let strongSelf = self, !imageSizeExceedLimit else {
                         
-                        // Setup right bar button item
-                        self?.setupRightBarButtonItem()
+                        DispatchQueue.main.async {
+                            // Setup right bar button item
+                            self?.setupRightBarButtonItem()
+                            
+                            // Hide Loading View
+                            self?.showHideLoadingView(false)
+                        }
                         return
                     }
                     
-                    // Check if image size is valid
-                    if isImageSizeValid(data) {
-                        selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:], assetExtension: "jpg"))
-                    } else {
-                        imageSizeExceedLimit = true
-                        strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                    DispatchQueue.main.async {
+                        // Hide Loading View
+                        self?.showHideLoadingView(false)
                         
-                        // Setup right bar button item
-                        strongSelf.setupRightBarButtonItem()
-                        
-                        cancelImagesRequests(imageRequests: imagesRequests)
-                        return
-                    }
-                    
-                    // Check total max image size
-                    if selectedAssets.count == assets.count {
-                        let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
-                            result + (asset.assetData?.count ?? 0)
-                        })
-                        
-                        if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
+                        // Check if image size is valid
+                        if isImageSizeValid(data) {
+                            selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:], assetExtension: "jpg"))
+                        } else {
+                            imageSizeExceedLimit = true
                             strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
                             
                             // Setup right bar button item
                             strongSelf.setupRightBarButtonItem()
-                        } else {
-                            strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
-                            strongSelf.didClickCancelButton()
+                            
+                            cancelImagesRequests(imageRequests: imagesRequests)
+                            return
+                        }
+                        
+                        // Check total max image size
+                        if selectedAssets.count == assets.count {
+                            let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
+                                result + (asset.assetData?.count ?? 0)
+                            })
+                            
+                            if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
+                                strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                                
+                                // Setup right bar button item
+                                strongSelf.setupRightBarButtonItem()
+                            } else {
+                                strongSelf.delegate?.galleryViewController(didSelectAssets: selectedAssets)
+                                strongSelf.didClickCancelButton()
+                            }
                         }
                     }
                 }
@@ -290,11 +311,20 @@ class JNPhotoGalleryViewController: UIViewController {
                 let imageRequestID = PHImageManager().requestAVAsset(forVideo: asset, options: videoOptions) { [weak self] (avasset, mix, info) in
                     
                     guard let strongSelf = self, let avasset = avasset as? AVURLAsset else {
-                        self?.setupRightBarButtonItem()
+                        DispatchQueue.main.async {
+                            
+                            // Hide Loading View
+                            self?.showHideLoadingView(false)
+                            
+                            self?.setupRightBarButtonItem()
+                        }
                         return
                     }
                     
                     DispatchQueue.main.async {
+                        
+                        // Hide Loading View
+                        self?.showHideLoadingView(false)
                         
                         let data = try? Data(contentsOf: avasset.url)
                         
@@ -385,6 +415,49 @@ class JNPhotoGalleryViewController: UIViewController {
         assetCollectionSelectionView.popoverPresentationController?.delegate = self
         
         self.present(assetCollectionSelectionView, animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - Loading view
+    
+    /**
+     Initialize Loading View
+     */
+    private func initLoadingView() {
+        
+        // Init View
+        self.loadingView = UIView(frame: CGRect.zero)
+        self.loadingView.backgroundColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5)
+        self.view.addSubview(self.loadingView)
+        self.loadingView.isHidden = true
+        
+        // Init Activity Indicator
+        let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+        activityIndicator.tintColor =  UIColor.gray
+        activityIndicator.color =  UIColor.gray
+        activityIndicator.startAnimating()
+        self.loadingView.addSubview(activityIndicator)
+        
+        // Add loading view constraints
+        self.loadingView.translatesAutoresizingMaskIntoConstraints = false
+        self.loadingView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        self.loadingView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        self.loadingView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        self.loadingView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        
+        // Add Activity Indicator Constraints
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: self.loadingView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: self.loadingView.centerYAnchor).isActive = true
+    }
+    
+    /**
+     Show/Hide LoadingView
+     - Parameter show : Bool value to show or hide loading view.
+     */
+    func showHideLoadingView(_ show : Bool) {
+        self.view.bringSubviewToFront(self.loadingView)
+        self.loadingView.isHidden = !show
     }
 }
 

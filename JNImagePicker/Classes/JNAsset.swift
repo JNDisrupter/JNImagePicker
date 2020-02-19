@@ -22,7 +22,7 @@ public struct JNAsset {
     public var mediaType: MediaType
     public var assetExtension: String?
     
-    init(image: UIImage, assetExtension: String) {
+    init(image: UIImage, assetExtension: String? = nil) {
         self.originalAsset = nil
         self.assetData = image.jpegData(compressionQuality: 1)!
         self.assetInfo = [:]
@@ -30,7 +30,7 @@ public struct JNAsset {
         self.assetExtension = assetExtension
     }
     
-    init(originalAsset: PHAsset?, assetData: Data, assetInfo: [AnyHashable: Any], assetExtension: String?) {
+    init(originalAsset: PHAsset?, assetData: Data, assetInfo: [AnyHashable: Any], assetExtension: String? = nil) {
         self.originalAsset = originalAsset
         self.assetData = assetData
         self.assetInfo = assetInfo
@@ -38,7 +38,7 @@ public struct JNAsset {
         self.assetExtension = assetExtension
     }
     
-    init(originalAsset: PHAsset?, assetExtension: String?) {
+    init(originalAsset: PHAsset?, assetExtension: String? = nil) {
         self.originalAsset = originalAsset
         self.assetData = nil
         self.assetInfo = [:]

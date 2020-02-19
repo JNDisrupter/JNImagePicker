@@ -212,12 +212,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 9SJR5T495P;
+						DevelopmentTeam = 57M378XZD9;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 9SJR5T495P;
+						DevelopmentTeam = 57M378XZD9;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -491,7 +491,7 @@
 			baseConfigurationReference = 75C4F6ED99FB2DA473CD1C38 /* Pods-JNImagePicker_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9SJR5T495P;
+				DEVELOPMENT_TEAM = 57M378XZD9;
 				INFOPLIST_FILE = JNImagePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -507,7 +507,7 @@
 			baseConfigurationReference = 369657AB3F5936790E089C82 /* Pods-JNImagePicker_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9SJR5T495P;
+				DEVELOPMENT_TEAM = 57M378XZD9;
 				INFOPLIST_FILE = JNImagePicker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -522,7 +522,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3293852A845F8D0E8555BB1C /* Pods-JNImagePicker_Tests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 9SJR5T495P;
+				DEVELOPMENT_TEAM = 57M378XZD9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -545,7 +545,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 776F9F3B3908DC2BF2AFB92D /* Pods-JNImagePicker_Tests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = 9SJR5T495P;
+				DEVELOPMENT_TEAM = 57M378XZD9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

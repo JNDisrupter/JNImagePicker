@@ -47,7 +47,7 @@ extension ViewController: JNImagePickerViewControllerDelegate {
         print("ssss", assets)
     }
     
-    func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error) {
+    func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error?) {
         print("ssss", error)
     }
     
