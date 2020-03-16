@@ -49,11 +49,11 @@ open class JNImagePickerViewController: UINavigationController {
     /// It will have selected the specific assets.
     public var defaultSelectedAssets: [JNAsset]?
     
-    /// Maximum Image Size in MB default is -1 if -1 then there is no limit
-    public var maximumImageSize: Double = -1
+    /// Maximum Media Size in MB default is -1 if -1 then there is no limit
+    public var maximumMediaSize: Double = -1
     
-    /// Maximum Total Images Sizes in MB default is -1 if -1 then there is no limit
-    public var maximumTotalImagesSizes: Double = -1
+    /// Maximum Total Media Sizes in MB default is -1 if -1 then there is no limit
+    public var maximumTotalMediaSizes: Double = -1
     
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
@@ -112,8 +112,8 @@ open class JNImagePickerViewController: UINavigationController {
         func openGallery() {
             self.setNavigationBarHidden(false, animated: false)
             let rootViewController = JNPhotoGalleryViewController()
-            rootViewController.maximumImageSize = self.maximumImageSize
-            rootViewController.maximumTotalImagesSizes = self.maximumTotalImagesSizes
+            rootViewController.maximumMediaSize = self.maximumMediaSize
+            rootViewController.maximumTotalMediaSizes = self.maximumTotalMediaSizes
             rootViewController.assetGroupTypes = self.assetGroupTypes
             rootViewController.mediaType = self.mediaType
             rootViewController.sourceType = self.sourceType
@@ -291,16 +291,29 @@ extension JNImagePickerViewController: JNPhotoGalleryViewControllerDelegate {
     }
     
     /**
-     Did Exceed Maximum image size.
+     Did exceed maximum media size for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumSize: Media MAximum size.
+     - Parameter actualMediaSize: Selected media size
      */
-    public func galleryViewControllerDidExceedMaximumImageSize() {
-        self.pickerDelegate?.imagePickerViewController(didExceedMaximumImageSize: self)
+    public func galleryViewController(didExceedMaximumMediaSizeFor mediaType: JNImagePickerViewController.MediaType, with maximumSize: Double, actualMediaSize: Double) {
+        self.pickerDelegate?.imagePickerViewController(didExceedMaximumMediaSizeFor: mediaType, with: maximumSize, actualMediaSize: actualMediaSize)
+    }
+    
+    /**
+     Did exceed maximum total media sizes for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumTotalSizes: Media Total Maximum size.
+     - Parameter actualMediaSizes: Selected media Total size
+     */
+    public func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double) {
+        self.pickerDelegate?.imagePickerViewController(didExceedMaximumTotalMediaSizesFor: mediaType, with: maximumTotalSizes, actualMediaSizes: actualMediaSizes)
     }
 }
 
 /// JNImage Picker View Controller Delegate
 public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
- 
+    
     /**
      Did select assets
      - Parameter pickerController: The picker controller object.
@@ -316,10 +329,20 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
     func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error?)
     
     /**
-     Did Exceed Maximum image size.
-     - Parameter pickerController: The picker controller object.
+     Did exceed maximum media size for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumSize: Media MAximum size.
+     - Parameter actualMediaSize: Selected media size
      */
-    func imagePickerViewController(didExceedMaximumImageSize pickerController: JNImagePickerViewController)
+    func imagePickerViewController(didExceedMaximumMediaSizeFor mediaType: JNImagePickerViewController.MediaType, with maximumSize: Double, actualMediaSize: Double)
+    
+    /**
+     Did exceed maximum total media sizes for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumTotalSizes: Media Total Maximum size.
+     - Parameter actualMediaSizes: Selected media Total size
+     */
+    func imagePickerViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double)
     
     /**
      Did cancel picker.

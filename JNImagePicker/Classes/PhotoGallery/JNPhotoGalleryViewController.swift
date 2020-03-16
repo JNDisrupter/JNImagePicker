@@ -42,11 +42,11 @@ class JNPhotoGalleryViewController: UIViewController {
     /// View model
     private var viewModel: JNPhotoGalleryViewModel!
     
-    /// Maximum Image Size in MB default is -1 if -1 then there is no limit
-    public var maximumImageSize: Double = -1
+    /// Maximum Media Size in MB default is -1 if -1 then there is no limit
+    public var maximumMediaSize: Double = -1
     
     /// Maximum Total Images Sizes in MB default is -1 if -1 then there is no limit
-    public var maximumTotalImagesSizes: Double = -1
+    public var maximumTotalMediaSizes: Double = -1
     
     /// The Types of PHAssetCollection to display in the picker.
     public var assetGroupTypes: [PHAssetCollectionSubtype]!
@@ -202,15 +202,17 @@ class JNPhotoGalleryViewController: UIViewController {
     @objc private func didClickDoneButton() {
         
         /**
-         Is image size valid
-         - Parameter image data: Image data
+         Is media size valid
+         - Parameter data: Media data.
          - Returns: Boolean to indicate image data is with valid size
          */
-        func isImageSizeValid(_ imageData: Data?) -> Bool {
-            guard let imageData = imageData else { return false }
+        func isMediaSizeValid(_ data: Data) -> Bool {
+            
+            // Get maximum media size
+            let maximumMediaSize = self.maximumMediaSize > -1 ? self.maximumMediaSize : self.maximumTotalMediaSizes
             
             // Check if image size greater than maximum images sizes
-            if self.maximumImageSize > -1 && Double(imageData.count) >= (self.maximumImageSize * 1024 * 1024) {
+            if maximumMediaSize > -1 && Double(data.count) >= (maximumMediaSize * 1024 * 1024) {
                 return false
             }
             
@@ -257,7 +259,7 @@ class JNPhotoGalleryViewController: UIViewController {
                 
                 let imageRequestID = PHImageManager.default().requestImageData(for: asset, options: imageOptions) { [weak self] (data, string, imageOrientation, info) in
                     
-                    guard let strongSelf = self, !imageSizeExceedLimit else {
+                    guard let strongSelf = self, let data = data,!imageSizeExceedLimit else {
                         
                         DispatchQueue.main.async {
                             // Setup right bar button item
@@ -274,11 +276,12 @@ class JNPhotoGalleryViewController: UIViewController {
                         self?.showHideLoadingView(false)
                         
                         // Check if image size is valid
-                        if isImageSizeValid(data) {
-                            selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:], assetExtension: "jpg"))
+                        if isMediaSizeValid(data) {
+                            selectedAssets.append(JNAsset(originalAsset: asset, assetData: data, assetInfo: info ?? [:], assetExtension: "jpg"))
                         } else {
                             imageSizeExceedLimit = true
-                            strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                            let limitSize = strongSelf.maximumMediaSize > -1 ? strongSelf.maximumMediaSize : strongSelf.maximumTotalMediaSizes
+                            strongSelf.delegate?.galleryViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.image, with: limitSize, actualMediaSize: Double(data.count))
                             
                             // Setup right bar button item
                             strongSelf.setupRightBarButtonItem()
@@ -293,8 +296,8 @@ class JNPhotoGalleryViewController: UIViewController {
                                 result + (asset.assetData?.count ?? 0)
                             })
                             
-                            if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
-                                strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                            if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalMediaSizes * 1024 * 1024) {
+                                strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize))
                                 
                                 // Setup right bar button item
                                 strongSelf.setupRightBarButtonItem()
@@ -326,14 +329,22 @@ class JNPhotoGalleryViewController: UIViewController {
                         // Hide Loading View
                         self?.showHideLoadingView(false)
                         
-                        let data = try? Data(contentsOf: avasset.url)
+                        let videoData = try? Data(contentsOf: avasset.url)
+                        
+                        guard let data = videoData else {
+                            
+                            // Setup right bar button item
+                            self?.setupRightBarButtonItem()
+                            return
+                        }
                         
                         // Check if image size is valid
-                        if isImageSizeValid(data) {
-                            selectedAssets.append(JNAsset(originalAsset: asset, assetData: data!, assetInfo: info ?? [:], assetExtension: avasset.url.pathExtension.lowercased()))
+                        if isMediaSizeValid(data) {
+                            selectedAssets.append(JNAsset(originalAsset: asset, assetData: data, assetInfo: info ?? [:], assetExtension: avasset.url.pathExtension.lowercased()))
                         } else {
                             imageSizeExceedLimit = true
-                            strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                            let limitSize = strongSelf.maximumMediaSize > -1 ? strongSelf.maximumMediaSize : strongSelf.maximumTotalMediaSizes
+                            strongSelf.delegate?.galleryViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.video, with: limitSize, actualMediaSize: Double(data.count))
                             
                             // Setup right bar button item
                             strongSelf.setupRightBarButtonItem()
@@ -348,8 +359,8 @@ class JNPhotoGalleryViewController: UIViewController {
                                 result + (asset.assetData?.count ?? 0)
                             })
                             
-                            if strongSelf.maximumTotalImagesSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalImagesSizes * 1024 * 1024) {
-                                strongSelf.delegate?.galleryViewControllerDidExceedMaximumImageSize()
+                            if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalMediaSizes * 1024 * 1024) {
+                                strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize))
                                 
                                 // Setup right bar button item
                                 strongSelf.setupRightBarButtonItem()
@@ -524,9 +535,20 @@ public protocol JNPhotoGalleryViewControllerDelegate: NSObjectProtocol {
     func galleryViewController(didSelectAssets assets: [JNAsset])
     
     /**
-     Did Exceed Maximum image size.
+     Did exceed maximum media size for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumSize: Media MAximum size.
+     - Parameter actualMediaSize: Selected media size
      */
-    func galleryViewControllerDidExceedMaximumImageSize()
+    func galleryViewController(didExceedMaximumMediaSizeFor mediaType: JNImagePickerViewController.MediaType, with maximumSize: Double, actualMediaSize: Double)
+    
+    /**
+     Did exceed maximum total media sizes for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumTotalSizes: Media Total Maximum size.
+     - Parameter actualMediaSizes: Selected media Total size
+     */
+    func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double)
 }
 
 // MARK: - UICollectionViewDelegate
