@@ -297,7 +297,7 @@ class JNPhotoGalleryViewController: UIViewController {
                             })
                             
                             if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalMediaSizes * 1024 * 1024) {
-                                strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize))
+                                strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize), selectedMediaCount:  selectedAssets.count)
                                 
                                 // Setup right bar button item
                                 strongSelf.setupRightBarButtonItem()
@@ -364,7 +364,7 @@ class JNPhotoGalleryViewController: UIViewController {
                             })
                             
                             if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalMediaSizes * 1024 * 1024) {
-                                strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize))
+                                strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize), selectedMediaCount: selectedAssets.count)
                                 
                                 // Setup right bar button item
                                 strongSelf.setupRightBarButtonItem()
@@ -551,8 +551,9 @@ public protocol JNPhotoGalleryViewControllerDelegate: NSObjectProtocol {
      - Parameter mediaType: Media Type.
      - Parameter maximumTotalSizes: Media Total Maximum size.
      - Parameter actualMediaSizes: Selected media Total size
+     - Parameter selectedMediaCount: Selected media Count
      */
-    func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double)
+    func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int)
 }
 
 // MARK: - UICollectionViewDelegate
