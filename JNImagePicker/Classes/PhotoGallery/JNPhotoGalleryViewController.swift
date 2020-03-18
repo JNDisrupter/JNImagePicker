@@ -319,6 +319,7 @@ class JNPhotoGalleryViewController: UIViewController {
                             // Hide Loading View
                             self?.showHideLoadingView(false)
                             
+                            // Setup right bar button item
                             self?.setupRightBarButtonItem()
                         }
                         return
@@ -333,6 +334,9 @@ class JNPhotoGalleryViewController: UIViewController {
                         
                         guard let data = videoData else {
                             
+                            // Hide Loading View
+                              self?.showHideLoadingView(false)
+
                             // Setup right bar button item
                             self?.setupRightBarButtonItem()
                             return
