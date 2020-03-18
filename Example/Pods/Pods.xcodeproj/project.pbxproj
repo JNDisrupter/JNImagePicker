@@ -54,7 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06CC60215AE279CD7F5972FE81864C10 /* Pods_JNImagePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JNImagePicker_Example.framework; path = "Pods-JNImagePicker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		06CC60215AE279CD7F5972FE81864C10 /* Pods_JNImagePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		08BC4C50033F5BE81A27B03496731319 /* Pods-JNImagePicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		124F46D6CBE4C70EC42BBCF920C285D6 /* AssetCollectionSelectionTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = AssetCollectionSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		1516DB8F7D3046B0C2DCA234A8FF5F3E /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = JNImagePicker/Assets/Media.xcassets; sourceTree = "<group>"; };
@@ -66,17 +66,17 @@
 		31B1A2039B3C004AC4815FF1925A395E /* JNImagePicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JNImagePicker-Info.plist"; sourceTree = "<group>"; };
 		362396139D44CEF2EC7EDED15159E452 /* JNAsset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNAsset.swift; path = JNImagePicker/Classes/JNAsset.swift; sourceTree = "<group>"; };
 		39AF388EAEC1B048CD00241C292F02DB /* JNImageCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		4108AD7E2833CD934ECF8BB671B0183F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		4726A4D6689D9DBE83F90C1D57993FB2 /* Pods_JNImagePicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_JNImagePicker_Tests.framework; path = "Pods-JNImagePicker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4108AD7E2833CD934ECF8BB671B0183F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4726A4D6689D9DBE83F90C1D57993FB2 /* Pods_JNImagePicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A9D68B7BA1C1A21A3212F6C423F604 /* Pods-JNImagePicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNImagePicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4EE8D41B9072DFABA0D3DBDD3955FA0E /* JNCameraCollectionViewCellRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraCollectionViewCellRepresentable.swift; sourceTree = "<group>"; };
 		5045B41B1A0EA68582DFE40826A56508 /* JNPhotoGalleryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryViewModel.swift; sourceTree = "<group>"; };
-		5821FC04015EB76FEA15613B72D43BDD /* JNImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JNImagePicker.framework; path = JNImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5821FC04015EB76FEA15613B72D43BDD /* JNImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JNImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59851ACC8BB13D211ACB3C744882559E /* JNCameraPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraPickerViewController.swift; sourceTree = "<group>"; };
 		5B0CA78CE691D727FBB2B7E23C763FFE /* JNImagePicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNImagePicker-prefix.pch"; sourceTree = "<group>"; };
 		5E6A6436AC5172E28D706C2B45C3C370 /* Pods-JNImagePicker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6F0BFB0507C08D6902BB11E9318830A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		6F3AED35D0A5C30F78027BC7D4A2E7E1 /* JNImagePicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = JNImagePicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		6F0BFB0507C08D6902BB11E9318830A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6F3AED35D0A5C30F78027BC7D4A2E7E1 /* JNImagePicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JNImagePicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		75759262BD57630A7B592B4CD37E197D /* JNImageCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = JNImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		836130DF0554D20C32155396C19367C2 /* Pods-JNImagePicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNImagePicker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		8D6C67D004A8565C4F76112C8F97829D /* Pods-JNImagePicker_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Tests-Info.plist"; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		95F504919364CE9E35835BD1825646CD /* JNImagePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNImagePicker-umbrella.h"; sourceTree = "<group>"; };
 		9722F7E932C1298B440D3DC22B7F7BB7 /* Pods-JNImagePicker_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Example-Info.plist"; sourceTree = "<group>"; };
 		9B68FE62B2EB33D49F5D112DCB0806E9 /* JNImagePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNImagePickerViewController.swift; path = JNImagePicker/Classes/JNImagePickerViewController.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A4BE04BD390C42806DF9EE95AD6B5B63 /* Pods-JNImagePicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNImagePicker_Tests-dummy.m"; sourceTree = "<group>"; };
 		AE2380937C372A23C018C7EDCF03A9B0 /* CollectionViewRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewRepresentable.swift; sourceTree = "<group>"; };
 		B3F577F528A09251F8975DA3711956B5 /* Pods-JNImagePicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNImagePicker_Example.modulemap"; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 				3072E115E0D551746592E90ED0DB3241 /* AssetCollectionSelectionViewController.swift */,
 				4035F557B0B78CCE23BEE278DE71751C /* Cells */,
 			);
-			name = AssetCollectionSelectionViewController;
 			path = AssetCollectionSelectionViewController;
 			sourceTree = "<group>";
 		};
@@ -163,7 +162,6 @@
 				2ED42254CEB6E3B0AD64F73E612F3B0D /* JNCameraCollectionViewCell */,
 				54F202B5D3E8DACA7163A4C78931DAE9 /* JNImageCollectionViewCell */,
 			);
-			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -172,7 +170,6 @@
 			children = (
 				1B4BFD57428C98EEDEA79CD2A2E858E9 /* JNCameraCollectionViewCell.swift */,
 			);
-			name = JNCameraCollectionViewCell;
 			path = JNCameraCollectionViewCell;
 			sourceTree = "<group>";
 		};
@@ -213,7 +210,6 @@
 			children = (
 				5C6DAE656E98510FB228B095EBC37D22 /* AssetCollectionSelectionTableViewCell */,
 			);
-			name = Cells;
 			path = Cells;
 			sourceTree = "<group>";
 		};
@@ -222,7 +218,6 @@
 			children = (
 				39AF388EAEC1B048CD00241C292F02DB /* JNImageCollectionViewCell.swift */,
 			);
-			name = JNImageCollectionViewCell;
 			path = JNImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
@@ -231,7 +226,6 @@
 			children = (
 				D7952F6E4EB067A85A813ED7ECD9434D /* AssetCollectionSelectionTableViewCell.swift */,
 			);
-			name = AssetCollectionSelectionTableViewCell;
 			path = AssetCollectionSelectionTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -481,14 +475,15 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1120;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = B7EAE15E86DEC200AC4A21F3199CE074 /* Products */;
@@ -591,6 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -722,6 +718,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -771,8 +768,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};

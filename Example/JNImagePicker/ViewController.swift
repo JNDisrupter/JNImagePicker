@@ -30,9 +30,9 @@ class ViewController: UIViewController {
     @IBAction func dids(_ sender: Any) {
         let vc = JNImagePickerViewController()
         vc.mediaType = .image
-        vc.maximumImageSize = 1
+        vc.maximumMediaSize = 1
         vc.sourceType = .gallery
-        vc.maximumTotalImagesSizes = 5
+        vc.maximumTotalMediaSizes = 5
         vc.pickerDelegate = self
         self.present(vc, animated: true, completion: nil)
     }
@@ -51,7 +51,24 @@ extension ViewController: JNImagePickerViewControllerDelegate {
         print("ssss", error)
     }
     
-    func imagePickerViewController(didExceedMaximumImageSize pickerController: JNImagePickerViewController) {
-        print("exceed")
+    /**
+     Did exceed maximum media size for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumSize: Media MAximum size.
+     - Parameter actualMediaSize: Selected media size
+     */
+    func imagePickerViewController(didExceedMaximumMediaSizeFor mediaType: JNImagePickerViewController.MediaType, with maximumSize: Double, actualMediaSize: Double){
+         print("exceed")
+    }
+    
+    /**
+     Did exceed maximum total media sizes for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumTotalSizes: Media Total Maximum size.
+     - Parameter actualMediaSizes: Selected media Total size
+     - Parameter selectedMediaCount: Selected media Count
+     */
+    func imagePickerViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int){
+         print("exceed")
     }
 }

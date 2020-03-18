@@ -301,13 +301,14 @@ extension JNImagePickerViewController: JNPhotoGalleryViewControllerDelegate {
     }
     
     /**
-     Did exceed maximum total media sizes for
-     - Parameter mediaType: Media Type.
-     - Parameter maximumTotalSizes: Media Total Maximum size.
-     - Parameter actualMediaSizes: Selected media Total size
-     */
-    public func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double) {
-        self.pickerDelegate?.imagePickerViewController(didExceedMaximumTotalMediaSizesFor: mediaType, with: maximumTotalSizes, actualMediaSizes: actualMediaSizes)
+      Did exceed maximum total media sizes for
+      - Parameter mediaType: Media Type.
+      - Parameter maximumTotalSizes: Media Total Maximum size.
+      - Parameter actualMediaSizes: Selected media Total size
+      - Parameter selectedMediaCount: Selected media Count
+      */
+     public func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int) {
+        self.pickerDelegate?.imagePickerViewController(didExceedMaximumTotalMediaSizesFor: mediaType, with: maximumTotalSizes, actualMediaSizes: actualMediaSizes, selectedMediaCount: selectedMediaCount)
     }
 }
 
@@ -341,8 +342,9 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
      - Parameter mediaType: Media Type.
      - Parameter maximumTotalSizes: Media Total Maximum size.
      - Parameter actualMediaSizes: Selected media Total size
+     - Parameter selectedMediaCount: Selected media Count
      */
-    func imagePickerViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double)
+    func imagePickerViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int)
     
     /**
      Did cancel picker.
