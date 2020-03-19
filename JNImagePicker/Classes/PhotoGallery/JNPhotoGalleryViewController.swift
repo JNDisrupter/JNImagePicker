@@ -281,7 +281,9 @@ class JNPhotoGalleryViewController: UIViewController {
                         } else {
                             imageSizeExceedLimit = true
                             let limitSize = strongSelf.maximumMediaSize > -1 ? strongSelf.maximumMediaSize : strongSelf.maximumTotalMediaSizes
-                            strongSelf.delegate?.galleryViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.image, with: limitSize, actualMediaSize: Double(data.count))
+                            
+                            let actualMediaSize = Double(data.count / (1024 * 1024))
+                           strongSelf.delegate?.galleryViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.image, with: limitSize, actualMediaSize: actualMediaSize)
                             
                             // Setup right bar button item
                             strongSelf.setupRightBarButtonItem()
@@ -292,11 +294,13 @@ class JNPhotoGalleryViewController: UIViewController {
                         
                         // Check total max image size
                         if selectedAssets.count == assets.count {
-                            let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
+                            var totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
                                 result + (asset.assetData?.count ?? 0)
                             })
                             
-                            if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalMediaSizes * 1024 * 1024) {
+                            totalImagesSize = totalImagesSize / (1024 * 1024)
+                            if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= strongSelf.maximumTotalMediaSizes {
+                               
                                 strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize), selectedMediaCount:  selectedAssets.count)
                                 
                                 // Setup right bar button item
@@ -348,7 +352,9 @@ class JNPhotoGalleryViewController: UIViewController {
                         } else {
                             imageSizeExceedLimit = true
                             let limitSize = strongSelf.maximumMediaSize > -1 ? strongSelf.maximumMediaSize : strongSelf.maximumTotalMediaSizes
-                            strongSelf.delegate?.galleryViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.video, with: limitSize, actualMediaSize: Double(data.count))
+                            
+                            let actualMediaSize = Double(data.count / (1024 * 1024))
+                            strongSelf.delegate?.galleryViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.video, with: limitSize, actualMediaSize: actualMediaSize)
                             
                             // Setup right bar button item
                             strongSelf.setupRightBarButtonItem()
@@ -359,11 +365,14 @@ class JNPhotoGalleryViewController: UIViewController {
                         
                         // Check total max image size
                         if selectedAssets.count == assets.count {
-                            let totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
+                            var totalImagesSize = selectedAssets.reduce(0, { (result, asset) -> Int in
                                 result + (asset.assetData?.count ?? 0)
                             })
                             
-                            if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= (strongSelf.maximumTotalMediaSizes * 1024 * 1024) {
+                            // Convert to MB
+                            totalImagesSize = totalImagesSize / (1024 * 1024)
+                            
+                            if strongSelf.maximumTotalMediaSizes > -1 && Double(totalImagesSize) >= strongSelf.maximumTotalMediaSizes {
                                 strongSelf.delegate?.galleryViewController(didExceedMaximumTotalMediaSizesFor: strongSelf.mediaType, with: strongSelf.maximumTotalMediaSizes, actualMediaSizes: Double(totalImagesSize), selectedMediaCount: selectedAssets.count)
                                 
                                 // Setup right bar button item
