@@ -181,6 +181,24 @@ open class JNImagePickerViewController: UINavigationController {
 extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     /**
+     Is media size valid
+     - Parameter data: Media data.
+     - Returns: Boolean to indicate image data is with valid size
+     */
+    private func isMediaSizeValid(_ data: Data) -> Bool {
+        
+        // Get maximum media size
+        let maximumMediaSize = self.maximumMediaSize > -1 ? self.maximumMediaSize : self.maximumTotalMediaSizes
+        
+        // Check if image size greater than maximum images sizes
+        if maximumMediaSize > -1 && Double(data.count) >= (maximumMediaSize * 1024 * 1024) {
+            return false
+        }
+        
+        return true
+    }
+    
+    /**
      Did finish picking media with info
      */
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -217,12 +235,27 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
                 // Add image to assets
                 if let image = image {
                     let jnAsset = JNAsset(image: image, assetExtension: assetExtension)
-                    self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
-                } else {
                     
-                    // Failed to selecte asset
-                    self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: nil)
+                    // Get asset data
+                    if let assetData = jnAsset.assetData {
+                        
+                        // Check if data has valid size
+                        if self.isMediaSizeValid(assetData) {
+
+                            self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
+                            return
+                            
+                        } else {
+                            
+                            let actualMediaSize = Double(assetData.count / (1024*1024))
+                            self.pickerDelegate?.imagePickerViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.image, with: self.maximumMediaSize, actualMediaSize: actualMediaSize)
+                            return
+                        }
+                    }
                 }
+                
+                // Failed to selecte asset
+                self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: nil)
                 
                 // Vide type
             } else {
@@ -255,14 +288,27 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
                                     var jnAsset = JNAsset(originalAsset: newAsset, assetExtension: assetExtension)
                                     do { jnAsset.assetData = try Data(contentsOf: videoURL) } catch { }
                                     
-                                    // Did select asset
-                                    self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
+                                    // Get asset data
+                                    if let assetData = jnAsset.assetData {
+                                        
+                                        // Check if data has valid size
+                                        if self.isMediaSizeValid(assetData) {
+                                            
+                                            self.pickerDelegate?.imagePickerViewController(pickerController: self, didSelectAssets: [jnAsset])
+                                            return
+                                            
+                                        } else {
+                                            
+                                            let actualMediaSize = Double(assetData.count / (1024*1024))
+                                            self.pickerDelegate?.imagePickerViewController(didExceedMaximumMediaSizeFor: JNImagePickerViewController.MediaType.video, with: self.maximumMediaSize, actualMediaSize: actualMediaSize)
+                                            return
+                                        }
+                                    }
                                 }
-                            } else {
-                                
-                                // Failed to selecte asset
-                                self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: error!)
                             }
+                            
+                            // Failed to selecte asset
+                            self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: error!)
                         }
                     }
                 }
@@ -301,13 +347,13 @@ extension JNImagePickerViewController: JNPhotoGalleryViewControllerDelegate {
     }
     
     /**
-      Did exceed maximum total media sizes for
-      - Parameter mediaType: Media Type.
-      - Parameter maximumTotalSizes: Media Total Maximum size.
-      - Parameter actualMediaSizes: Selected media Total size
-      - Parameter selectedMediaCount: Selected media Count
-      */
-     public func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int) {
+     Did exceed maximum total media sizes for
+     - Parameter mediaType: Media Type.
+     - Parameter maximumTotalSizes: Media Total Maximum size.
+     - Parameter actualMediaSizes: Selected media Total size
+     - Parameter selectedMediaCount: Selected media Count
+     */
+    public func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int) {
         self.pickerDelegate?.imagePickerViewController(didExceedMaximumTotalMediaSizesFor: mediaType, with: maximumTotalSizes, actualMediaSizes: actualMediaSizes, selectedMediaCount: selectedMediaCount)
     }
 }
