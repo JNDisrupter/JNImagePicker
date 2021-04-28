@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         vc.sourceType = .gallery
         vc.maximumTotalMediaSizes = 5
         vc.pickerDelegate = self
+        vc.manageLimitedAccessString = "You've given YourApp access to only a select number of photos."
         self.present(vc, animated: true, completion: nil)
     }
 }

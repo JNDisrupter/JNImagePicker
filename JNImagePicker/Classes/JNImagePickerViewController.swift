@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 import Photos
+import PhotosUI
 import MobileCoreServices
 
 /// JNImage Picker View Controller
@@ -57,6 +58,9 @@ open class JNImagePickerViewController: UINavigationController {
     
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
+    
+    /// Manage limited access string
+    public var manageLimitedAccessString: String = ""
     
     /// Image Deleviry mode
     public var imageDeliveryMode: PHImageRequestOptionsDeliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
@@ -121,6 +125,7 @@ open class JNImagePickerViewController: UINavigationController {
             rootViewController.maxSelectableCount = self.maxSelectableCount
             rootViewController.defaultSelectedAssets = self.defaultSelectedAssets
             rootViewController.allowEditing = self.allowEditing
+            rootViewController.manageLimitedAccessString = self.manageLimitedAccessString
             rootViewController.videoDeliveryMode = self.videoDeliveryMode
             rootViewController.imageDeliveryMode = self.imageDeliveryMode
             rootViewController.delegate = self

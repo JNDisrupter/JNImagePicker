@@ -30,6 +30,9 @@ class JNPhotoGalleryViewController: UIViewController {
     /// Loading view
     internal var loadingView: UIView!
     
+    /// Manage limited access view
+    internal var manageLimitedAccessView: UIView!
+    
     /// Assets manager
     private var assetsManager: JNAssetsManager!
     
@@ -69,6 +72,9 @@ class JNPhotoGalleryViewController: UIViewController {
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
     
+    /// Manage limited access string
+    public var manageLimitedAccessString: String = ""
+    
     /// Video delivery mode
     public var videoDeliveryMode: PHVideoRequestOptionsDeliveryMode = PHVideoRequestOptionsDeliveryMode.highQualityFormat
     
@@ -78,11 +84,25 @@ class JNPhotoGalleryViewController: UIViewController {
     /// Delegate
     public weak var delegate: JNPhotoGalleryViewControllerDelegate?
     
+    /// Is limited access enabled
+    private var isLimitedAccessEnabled: Bool {
+        
+        var isLimited = false
+        
+        if #available(iOS 14, *) {
+            isLimited = PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited
+        }
+        return isLimited
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Init assets manager
         self.assetsManager = JNAssetsManager()
+        
+        // Register for PHPhotoLibraryChangeObserver
+        PHPhotoLibrary.shared().register(self)
         
         // Get collections list
         self.collectionsList = self.assetsManager.getAssetCollections(subTypes: self.assetGroupTypes, options: nil)
@@ -97,6 +117,11 @@ class JNPhotoGalleryViewController: UIViewController {
         
         // Load assets
         self.loadAssets()
+            
+        // Check if there is manage limited access string, then init manage limited access view
+        if self.isLimitedAccessEnabled && !self.manageLimitedAccessString.isEmpty {
+            self.initManageLimitedAccessView()
+        }
         
         // Init collection view
         self.initCollectionView()
@@ -148,13 +173,114 @@ class JNPhotoGalleryViewController: UIViewController {
         
         // Add collection view constraints
         self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+            
+        // Check if there is manage limited access string, then init manage limited access view
+        if self.isLimitedAccessEnabled && !self.manageLimitedAccessString.isEmpty {
+            self.collectionView.topAnchor.constraint(equalTo: self.manageLimitedAccessView.bottomAnchor).isActive = true
+        }
+        else {
+            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        }
         
         // Register cell
         JNImageCollectionViewCell.registerCell(collectionView: self.collectionView)
         JNCameraCollectionViewCell.registerCell(collectionView: self.collectionView)
+    }
+    
+    // MARK: - Manage Limited Access View
+    
+    /**
+     Initialize manage limited access view
+     */
+    private func initManageLimitedAccessView() {
+        
+        // Init manage limited access view
+        self.manageLimitedAccessView = UIView()
+        self.manageLimitedAccessView.backgroundColor = UIColor.white
+        self.manageLimitedAccessView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.manageLimitedAccessView)
+
+        // Init description label
+        let descriptionLabel = UILabel()
+        descriptionLabel.textColor = UIColor.darkGray
+        descriptionLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        descriptionLabel.numberOfLines = 0
+        descriptionLabel.text = self.manageLimitedAccessString
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.manageLimitedAccessView.addSubview(descriptionLabel)
+        
+        // Init manage button
+        let manageButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 28))
+        manageButton.setTitleColor(UIColor.black, for: .normal)
+        manageButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        manageButton.backgroundColor = UIColor(white: 0.9, alpha: 0.8)
+        manageButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+        manageButton.setTitle("Manage", for: .normal)
+        
+        manageButton.addTarget(self, action: #selector(self.didClickManageButton), for: .touchUpInside)
+        manageButton.translatesAutoresizingMaskIntoConstraints = false
+        self.manageLimitedAccessView.addSubview(manageButton)
+
+        // Add constraints for manage limited access view
+        self.manageLimitedAccessView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        self.manageLimitedAccessView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        if #available(iOS 11, *) {
+            self.manageLimitedAccessView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        }
+        else {
+            self.manageLimitedAccessView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        }
+        
+        // Add constraints for description label
+        descriptionLabel.leadingAnchor.constraint(equalTo: self.manageLimitedAccessView.leadingAnchor, constant: 16).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: self.manageLimitedAccessView.topAnchor, constant: 8).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: self.manageLimitedAccessView.bottomAnchor, constant: -8).isActive = true
+
+        // Add constraints for manage button
+        manageButton.trailingAnchor.constraint(equalTo: self.manageLimitedAccessView.trailingAnchor, constant: -16).isActive = true
+        manageButton.leadingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor, constant: 8).isActive = true
+        manageButton.centerYAnchor.constraint(equalTo: self.manageLimitedAccessView.centerYAnchor).isActive = true
+        manageButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        manageButton.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
+        // Set corner radius
+        manageButton.layer.cornerRadius = manageButton.frame.height/2
+        manageButton.clipsToBounds = true
+    }
+    
+    /**
+     Did click manage button
+     */
+    @objc private func didClickManageButton() {
+        
+        // Create action sheet
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // Add select more photos action
+        actionSheet.addAction(UIAlertAction(title: "Select More Photos", style: .default) { _ in
+            
+            if #available(iOS 14, *) {
+                PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
+            }
+        })
+        
+        // Add change settings action
+        actionSheet.addAction(UIAlertAction(title: "Change Settings", style: .default) { _ in
+            
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+            }
+        })
+        
+        // Add cancel action
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        // Present action sheet
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     // MARK: - Navigation item
@@ -761,4 +887,25 @@ extension JNPhotoGalleryViewController: UIImagePickerControllerDelegate, UINavig
         self.loadAssets()
         self.collectionView.reloadData()
     }
+}
+
+// MARK: - PHPhotoLibraryChangeObserver
+extension JNPhotoGalleryViewController : PHPhotoLibraryChangeObserver {
+    
+    /**
+     Photo library did change
+     */
+     func photoLibraryDidChange(_ changeInstance: PHChange) {
+        
+        // Media type
+        let mediaType: PHAssetMediaType = self.mediaType == .video ? .video : .image
+        
+        // Set new assets
+        self.viewModel.setAssets(self.assetsManager.getAssets(in: self.selectedAssetCollection!, type: mediaType))
+        
+        // Reload collection view
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+     }
 }
