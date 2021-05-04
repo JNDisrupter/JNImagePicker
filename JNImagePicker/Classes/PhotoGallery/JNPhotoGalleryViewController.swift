@@ -71,10 +71,7 @@ class JNPhotoGalleryViewController: UIViewController {
     
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
-    
-    /// Manage limited access string
-    public var manageLimitedAccessString: String = ""
-    
+        
     /// Video delivery mode
     public var videoDeliveryMode: PHVideoRequestOptionsDeliveryMode = PHVideoRequestOptionsDeliveryMode.highQualityFormat
     
@@ -93,6 +90,16 @@ class JNPhotoGalleryViewController: UIViewController {
             isLimited = PHPhotoLibrary.authorizationStatus(for: .readWrite) == .limited
         }
         return isLimited
+    }
+    
+    /// JN Image Picker Localization Configuration
+    private var localizationConfiguration: JNImagePickerLocalizationConfiguration {
+        // Get Navigation Controller
+        if let navigationController = self.navigationController as? JNImagePickerViewController {
+             return navigationController.localizationConfiguration
+        }
+        
+        return JNImagePickerLocalizationConfiguration()
     }
     
     override func viewDidLoad() {
@@ -119,7 +126,7 @@ class JNPhotoGalleryViewController: UIViewController {
         self.loadAssets()
             
         // Check if there is manage limited access string, then init manage limited access view
-        if self.isLimitedAccessEnabled && !self.manageLimitedAccessString.isEmpty {
+        if self.isLimitedAccessEnabled  {
             self.initManageLimitedAccessView()
         }
         
@@ -176,8 +183,8 @@ class JNPhotoGalleryViewController: UIViewController {
         self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
             
-        // Check if there is manage limited access string, then init manage limited access view
-        if self.isLimitedAccessEnabled && !self.manageLimitedAccessString.isEmpty {
+        // Check if is limited access enabled
+        if self.isLimitedAccessEnabled{
             self.collectionView.topAnchor.constraint(equalTo: self.manageLimitedAccessView.bottomAnchor).isActive = true
         }
         else {
@@ -207,7 +214,7 @@ class JNPhotoGalleryViewController: UIViewController {
         descriptionLabel.textColor = UIColor.darkGray
         descriptionLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.text = self.manageLimitedAccessString
+        descriptionLabel.text = self.localizationConfiguration.limitedAccessWarningView.title
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         self.manageLimitedAccessView.addSubview(descriptionLabel)
         
@@ -217,7 +224,7 @@ class JNPhotoGalleryViewController: UIViewController {
         manageButton.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         manageButton.backgroundColor = UIColor(white: 0.9, alpha: 0.8)
         manageButton.contentEdgeInsets = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
-        manageButton.setTitle("Manage", for: .normal)
+        manageButton.setTitle(self.localizationConfiguration.limitedAccessWarningView.manageAction, for: .normal)
         
         manageButton.addTarget(self, action: #selector(self.didClickManageButton), for: .touchUpInside)
         manageButton.translatesAutoresizingMaskIntoConstraints = false
@@ -259,7 +266,7 @@ class JNPhotoGalleryViewController: UIViewController {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // Add select more photos action
-        actionSheet.addAction(UIAlertAction(title: "Select More Photos", style: .default) { _ in
+        actionSheet.addAction(UIAlertAction(title: self.localizationConfiguration.limitedAccessWarningView.openLimitedLibraryPickerAction, style: .default) { _ in
             
             if #available(iOS 14, *) {
                 PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: self)
@@ -267,7 +274,7 @@ class JNPhotoGalleryViewController: UIViewController {
         })
         
         // Add change settings action
-        actionSheet.addAction(UIAlertAction(title: "Change Settings", style: .default) { _ in
+        actionSheet.addAction(UIAlertAction(title: self.localizationConfiguration.limitedAccessWarningView.openSettingsAction, style: .default) { _ in
             
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
@@ -289,7 +296,7 @@ class JNPhotoGalleryViewController: UIViewController {
      Init navigation item
      */
     private func initNavigationItem() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(self.didClickCancelButton))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: self.localizationConfiguration.cancelString, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickCancelButton))
         
         // Setup right bar button item
         self.setupRightBarButtonItem()
@@ -300,7 +307,7 @@ class JNPhotoGalleryViewController: UIViewController {
      */
     private func setupRightBarButtonItem() {
         
-        let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(self.didClickDoneButton))
+        let rightBarButtonItem = UIBarButtonItem(title: self.localizationConfiguration.doneString, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickDoneButton))
         let numberOFAssetsNumberButton = UIBarButtonItem(title: "(" + self.viewModel.selectedAssets.count.description + ")", style: UIBarButtonItem.Style.plain, target: nil, action: nil)
         
         if self.viewModel.selectedAssets.isEmpty {
@@ -709,7 +716,7 @@ extension JNPhotoGalleryViewController: UICollectionViewDelegate {
      Did select item at index path
      */
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let representable = self.viewModel.representableForItem(at: indexPath) as? JNCameraCollectionViewCellRepresentable {
+        if (self.viewModel.representableForItem(at: indexPath) as? JNCameraCollectionViewCellRepresentable) != nil {
             
             func openCamera() {
                 let imagePickerViewController = UIImagePickerController()
@@ -759,7 +766,7 @@ extension JNPhotoGalleryViewController: JNImageCollectionViewCellDelegate {
      */
     func imageCollectionViewCell(didSelectCell indexPath: IndexPath) {
         
-        if let representable = self.viewModel.representableForItem(at: indexPath) as? JNCameraCollectionViewCellRepresentable {
+        if (self.viewModel.representableForItem(at: indexPath) as? JNCameraCollectionViewCellRepresentable) != nil {
             
             func openCamera() {
                 let imagePickerViewController = UIImagePickerController()

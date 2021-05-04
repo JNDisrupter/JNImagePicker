@@ -13,6 +13,7 @@
 		26E29A890B54F1E8271F9CB4532DC983 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
 		2838798B6BEB6079E0A454656A2DDAE7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1516DB8F7D3046B0C2DCA234A8FF5F3E /* Media.xcassets */; };
 		34C85DF7F293162965CA33C21FACEA20 /* JNPhotoGalleryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D898A81AA79F6BB016D20EE76B7A6DC1 /* JNPhotoGalleryCollectionViewLayout.swift */; };
+		489330F2263B144A00CC7C5B /* JNImagePickerLocalizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489330F1263B144A00CC7C5B /* JNImagePickerLocalizationConfiguration.swift */; };
 		4F57AB28117BE7D200CC3C25F30388E1 /* JNAssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9672BAE6544265CBB7CA2CB30719210 /* JNAssetsManager.swift */; };
 		61D59D65E516AE20FFC65BAEBD4D4535 /* AssetCollectionSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7952F6E4EB067A85A813ED7ECD9434D /* AssetCollectionSelectionTableViewCell.swift */; };
 		6287FD2295CA3369C3F474831A10C3B5 /* JNCameraCollectionViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8D41B9072DFABA0D3DBDD3955FA0E /* JNCameraCollectionViewCellRepresentable.swift */; };
@@ -68,6 +69,7 @@
 		39AF388EAEC1B048CD00241C292F02DB /* JNImageCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		4108AD7E2833CD934ECF8BB671B0183F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4726A4D6689D9DBE83F90C1D57993FB2 /* Pods_JNImagePicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		489330F1263B144A00CC7C5B /* JNImagePickerLocalizationConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JNImagePickerLocalizationConfiguration.swift; sourceTree = "<group>"; };
 		48A9D68B7BA1C1A21A3212F6C423F604 /* Pods-JNImagePicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNImagePicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4EE8D41B9072DFABA0D3DBDD3955FA0E /* JNCameraCollectionViewCellRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraCollectionViewCellRepresentable.swift; sourceTree = "<group>"; };
 		5045B41B1A0EA68582DFE40826A56508 /* JNPhotoGalleryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryViewModel.swift; sourceTree = "<group>"; };
@@ -213,6 +215,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		489330F0263B140200CC7C5B /* LocalizationConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				489330F1263B144A00CC7C5B /* JNImagePickerLocalizationConfiguration.swift */,
+			);
+			path = LocalizationConfiguration;
+			sourceTree = "<group>";
+		};
 		54F202B5D3E8DACA7163A4C78931DAE9 /* JNImageCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +251,7 @@
 		6D5C5D02E27C393B2B4B2C974AA06A47 /* JNImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				489330F0263B140200CC7C5B /* LocalizationConfiguration */,
 				362396139D44CEF2EC7EDED15159E452 /* JNAsset.swift */,
 				9B68FE62B2EB33D49F5D112DCB0806E9 /* JNImagePickerViewController.swift */,
 				397DE2160A9E55307F7FD9CBA44A3561 /* Camera */,
@@ -475,7 +486,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1120;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -539,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61D59D65E516AE20FFC65BAEBD4D4535 /* AssetCollectionSelectionTableViewCell.swift in Sources */,
+				489330F2263B144A00CC7C5B /* JNImagePickerLocalizationConfiguration.swift in Sources */,
 				80ADF71BB4A9340EA40D59720BB2F76E /* AssetCollectionSelectionViewController.swift in Sources */,
 				09E881F14B7BDF73EC3C88AA9204154D /* CollectionViewRepresentable.swift in Sources */,
 				F688F02165B51EA40B0FD5DDBD6D804D /* JNAsset.swift in Sources */,
@@ -609,6 +621,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -741,6 +754,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

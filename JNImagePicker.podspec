@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'JNImagePicker'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'JNImagePicker'
   s.description      = 'Image picker for images and viewdes'
   s.homepage         = 'https://github.com/JNDisrupter'

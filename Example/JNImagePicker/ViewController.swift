@@ -27,14 +27,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func dids(_ sender: Any) {
+    @IBAction func openJNImagePickerViewController(_ sender: Any) {
         let vc = JNImagePickerViewController()
         vc.mediaType = .image
         vc.maximumMediaSize = 1
         vc.sourceType = .gallery
         vc.maximumTotalMediaSizes = 5
         vc.pickerDelegate = self
-        vc.manageLimitedAccessString = "You've given YourApp access to only a select number of photos."
         self.present(vc, animated: true, completion: nil)
     }
 }
@@ -45,11 +44,11 @@ extension ViewController: JNImagePickerViewControllerDelegate {
     }
     
     func imagePickerViewController(pickerController: JNImagePickerViewController, didSelectAssets assets: [JNAsset]) {
-        print("ssss", assets)
+        print("didSelectAssets: ", assets)
     }
     
     func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error?) {
-        print("ssss", error)
+        print("failedToSelectAsset: ", error ?? "")
     }
     
     /**
