@@ -890,9 +890,6 @@ extension JNPhotoGalleryViewController: UIImagePickerControllerDelegate, UINavig
         guard error == nil else {
             return
         }
-        
-        self.loadAssets()
-        self.collectionView.reloadData()
     }
 }
 
