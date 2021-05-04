@@ -14,10 +14,9 @@ Pod::Spec.new do |s|
   s.homepage                                    = 'https://github.com/JNDisrupter'
   s.license                                     = { :type => 'MIT', :file => 'LICENSE' }
   s.author                                      = { 'mohammadnabulsi' => 'mohammad.s.nabulsi@gmail.com' }
-  s.source                                      = { :git => 'https://github.com/JNDisrupter/JNImagePicker', :tag => s.version.to_s }
+  s.source                                      = { :git => 'https://github.com/JNDisrupter/JNImagePicker.git', :tag => s.version.to_s }
   s.ios.deployment_target                       = '9.0'
   s.source_files                                = 'JNImagePicker/Classes/**/*'
-  s.source_files                                = 'JNImagePicker/Classes/**/*'
   s.resources                                   = 'JNImagePicker/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf}'
-  s.swift_version                               = '5.4'
+  s.swift_version                               = '5.3'
 end
