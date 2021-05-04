@@ -28,7 +28,7 @@ public struct JNImagePickerLocalizationConfiguration {
     /**
      Initializer
      */
-    init() {
+    public init() {
         self.cancelString = "Cancel"
         self.doneString = "Done"
         self.photoPermissionDeniedView = PermissionDeniedView()
@@ -98,7 +98,7 @@ extension JNImagePickerLocalizationConfiguration {
         /**
          Initializer
          */
-        init() {
+        public init() {
             self.title = ""
             self.message = ""
             self.openSettingsAction = "Change Settings"
@@ -124,7 +124,7 @@ extension JNImagePickerLocalizationConfiguration {
         /**
          Initializer
          */
-        init() {
+        public init() {
             
             // App Name
             var appName = ""
