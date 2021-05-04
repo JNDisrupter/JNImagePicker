@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func dids(_ sender: Any) {
+    @IBAction func openJNImagePickerViewController(_ sender: Any) {
         let vc = JNImagePickerViewController()
         vc.mediaType = .image
         vc.maximumMediaSize = 1
@@ -44,11 +44,11 @@ extension ViewController: JNImagePickerViewControllerDelegate {
     }
     
     func imagePickerViewController(pickerController: JNImagePickerViewController, didSelectAssets assets: [JNAsset]) {
-        print("ssss", assets)
+        print("didSelectAssets: ", assets)
     }
     
     func imagePickerViewController(pickerController: JNImagePickerViewController, failedToSelectAsset error: Error?) {
-        print("ssss", error)
+        print("failedToSelectAsset: ", error ?? "")
     }
     
     /**

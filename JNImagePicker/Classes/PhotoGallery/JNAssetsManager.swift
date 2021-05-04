@@ -16,16 +16,24 @@ class JNAssetsManager {
      - Parameter completion: Completion block.
      */
     class func checkGalleryPermission(_ completion: @escaping (_ granted: Bool) -> Void) {
-        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.authorized {
+        
+        var status: PHAuthorizationStatus
+        
+        if #available(iOS 14, *) {
+            status = PHPhotoLibrary.authorizationStatus(for: PHAccessLevel.readWrite)
+        }else{
+            status = PHPhotoLibrary.authorizationStatus()
+        }
+        
+        switch  status {
+        case PHAuthorizationStatus.authorized, PHAuthorizationStatus.limited:
             completion(true)
-        } else {
-            if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.notDetermined {
-                PHPhotoLibrary.requestAuthorization { (status) in
-                    completion(status == PHAuthorizationStatus.authorized)
-                }
-            } else {
-                completion(false)
+        case PHAuthorizationStatus.notDetermined:
+            PHPhotoLibrary.requestAuthorization { (status) in
+                completion(status == PHAuthorizationStatus.authorized)
             }
+        default:
+            completion(false)
         }
     }
     
