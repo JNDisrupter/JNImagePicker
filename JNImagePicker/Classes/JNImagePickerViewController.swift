@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 import Photos
+import PhotosUI
 import MobileCoreServices
 
 /// JNImage Picker View Controller
@@ -58,6 +59,9 @@ open class JNImagePickerViewController: UINavigationController {
     /// Allow editing media after capturing, this value will be used when open camera
     public var allowEditing: Bool = false
     
+    /// JN Image Picker Localization Configuration
+    public var localizationConfiguration: JNImagePickerLocalizationConfiguration = JNImagePickerLocalizationConfiguration()
+    
     /// Image Deleviry mode
     public var imageDeliveryMode: PHImageRequestOptionsDeliveryMode = PHImageRequestOptionsDeliveryMode.highQualityFormat
     
@@ -67,8 +71,60 @@ open class JNImagePickerViewController: UINavigationController {
     /// Picker delegate
     public weak var pickerDelegate: JNImagePickerViewControllerDelegate?
     
+    /**
+     Init with coder
+     */
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Set modal transition style
+        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set modal presentation style
+        self.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        
+        // This controls whether this view controller takes over control of the status bar's appearance when presented non-full screen on another view controller
+        self.modalPresentationCapturesStatusBarAppearance = true
+    }
+    
+    /**
+     Init with nib name and bundle
+     */
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        // Set modal transition style
+        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set modal presentation style
+        self.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        
+        // This controls whether this view controller takes over control of the status bar's appearance when presented non-full screen on another view controller
+        self.modalPresentationCapturesStatusBarAppearance = true
+    }
+    
+    /**
+     Init
+     */
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Set modal transition style
+        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        // Set modal presentation style
+        self.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        
+        // This controls whether this view controller takes over control of the status bar's appearance when presented non-full screen on another view controller
+        self.modalPresentationCapturesStatusBarAppearance = true
+    }
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
+
+        // Setup Background Color
+        self.view.backgroundColor = UIColor.clear
+        self.view.isOpaque = true
         
         // Setup root view controller
         self.setupRootViewController()
@@ -78,6 +134,7 @@ open class JNImagePickerViewController: UINavigationController {
      Setup root view controller
      */
     private func setupRootViewController() {
+        
         func openCamera() {
             self.setNavigationBarHidden(true, animated: false)
             let imagePickerViewController = UIImagePickerController()
@@ -128,12 +185,81 @@ open class JNImagePickerViewController: UINavigationController {
             self.setViewControllers([rootViewController], animated: false)
         }
         
+        /**
+         Show photo settings alert
+         */
+        func showPhotoSettingsAlertViewController() {
+            
+            // Show error message
+            let alertController = UIAlertController(title: self.localizationConfiguration.photoPermissionDeniedView.title, message: self.localizationConfiguration.photoPermissionDeniedView.message, preferredStyle: .alert)
+            
+            // Add cancel action
+            alertController.addAction(UIAlertAction(title: self.localizationConfiguration.photoPermissionDeniedView.cancelAction, style: .cancel, handler: { [weak self] (_) in
+                
+                guard let self = self else {return}
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            }))
+            
+            // Add settings action
+            alertController.addAction(UIAlertAction(title: self.localizationConfiguration.photoPermissionDeniedView.openSettingsAction, style: .default, handler: { [weak self] (_) in
+                
+                guard let self = self else {return}
+                
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+                }
+                
+                // Dismiss View
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(alertController, animated: true)
+        }
+        
+        /**
+         Show camera settings alert
+         */
+        func showCameraSettingsAlertViewController() {
+            
+            // Show error message
+            let alertController = UIAlertController(title: self.localizationConfiguration.cameraPermissionDeniedView.title, message: self.localizationConfiguration.cameraPermissionDeniedView.message, preferredStyle: .alert)
+            
+            // Add cancel action
+            alertController.addAction(UIAlertAction(title: self.localizationConfiguration.cameraPermissionDeniedView.cancelAction, style: .cancel, handler: { [weak self] (_) in
+                
+                guard let self = self else {return}
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            }))
+            
+            // Add settings action
+            alertController.addAction(UIAlertAction(title: self.localizationConfiguration.cameraPermissionDeniedView.openSettingsAction, style: .default, handler: { [weak self] (_) in
+                
+                guard let self = self else {return}
+                
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                } else {
+                    UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
+                }
+                
+                // Dismiss View
+                self.dismiss(animated: true, completion: nil)
+            }))
+            
+            self.present(alertController, animated: true)
+        }
+        
         // Set default view controller
         self.setViewControllers([DefaultViewController()], animated: false)
         
         // Check if camera then open camera
         if self.sourceType == .camera {
-            self.setNavigationBarHidden(true, animated: false)
             
             // Check permission
             JNAssetsManager.checkCameraPermission { (granted) in
@@ -150,6 +276,10 @@ open class JNImagePickerViewController: UINavigationController {
                         DispatchQueue.main.async {
                             openCamera()
                         }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        showCameraSettingsAlertViewController()
                     }
                 }
             }
@@ -170,6 +300,10 @@ open class JNImagePickerViewController: UINavigationController {
                         DispatchQueue.main.async {
                             openGallery()
                         }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        showPhotoSettingsAlertViewController()
                     }
                 }
             }
@@ -400,12 +534,12 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
 
 /// Default view controller
 class DefaultViewController: UIViewController {
-    
+           
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         // Init navigation ietm
-        self.initNavigationItem()
+        //self.initNavigationItem()
     }
     
     // MARK: - Navigation item
@@ -414,7 +548,16 @@ class DefaultViewController: UIViewController {
      Init navigation item
      */
     private func initNavigationItem() {
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(self.didClickCancelButton))
+        
+        /// Cancel Bar ButtonItem Title
+        var cancelBarButtonItemTitle = ""
+        
+        // Get Navigation Controller
+        if let navigationController = self.navigationController as? JNImagePickerViewController {
+            cancelBarButtonItemTitle = navigationController.localizationConfiguration.cancelString
+        }
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: cancelBarButtonItemTitle, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickCancelButton))
     }
     
     /**
