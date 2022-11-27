@@ -296,6 +296,38 @@ class JNPhotoGalleryViewController: UIViewController {
      Init navigation item
      */
     private func initNavigationItem() {
+        
+        if #available(iOS 11.0, *) {
+            
+            // Set Large Title Display Mode
+            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
+            
+            if #available(iOS 13.0, *) {
+                
+                // Setup appearance
+                let appearance = UINavigationBarAppearance()
+                
+                // Configure With Opaque Background
+                appearance.configureWithOpaqueBackground()
+                
+                // Set Background
+                appearance.backgroundColor = UIColor.white
+                
+                // Reset Shadow Image
+                appearance.shadowImage = nil
+                
+                // Set scroll edge and standard appearance
+                self.navigationController?.navigationBar.scrollEdgeAppearance =  appearance
+                self.navigationController?.navigationBar.standardAppearance = appearance
+            }
+        }
+        
+        // Setup navigation bar
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+        self.navigationController?.navigationBar.isTranslucent = false
+        
+        // Set left bar button item
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: self.localizationConfiguration.cancelString, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickCancelButton))
         
         // Setup right bar button item
@@ -806,11 +838,6 @@ extension JNPhotoGalleryViewController: JNImageCollectionViewCellDelegate {
             return
         }
         
-        
-        if !self.singleSelect, self.viewModel.selectedAssets.count >= self.maxSelectableCount {
-            return
-        }
-        
         // Check if single select
         if self.singleSelect {
             let selectedItemIndexPath = self.viewModel.selectedItemsIndexPaths().first
@@ -822,14 +849,21 @@ extension JNPhotoGalleryViewController: JNImageCollectionViewCellDelegate {
                     cell.setup(representable: representable, indexPath: selectedItemIndexPath)
                 }
             }
-        } else {
+        }
+        
+        // If multi selection, check if the item is selected, if so deselect it
+        else if self.viewModel.isItemSelected(at: indexPath) {
+            self.viewModel.deselectItem(at: indexPath)
+        }
+        
+        // Skip if the selected assets is greater or equal to the maximum selectable items
+        else if self.viewModel.selectedAssets.count >= self.maxSelectableCount {
+            return
+        }
+        else {
             
-            // Check if item selected
-            if self.viewModel.isItemSelected(at: indexPath) {
-                self.viewModel.deselectItem(at: indexPath)
-            } else {
-                self.viewModel.selectItem(at: indexPath)
-            }
+            // Select item
+            self.viewModel.selectItem(at: indexPath)
         }
         
         // Reload cell
