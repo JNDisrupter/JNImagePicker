@@ -37,7 +37,18 @@ class AssetCollectionSelectionViewController: UIViewController {
     override var preferredContentSize: CGSize {
         get {
             if let groups = self.assetCollections {
-                return CGSize(width: UIScreen.main.bounds.width,
+                
+                // Get main screen
+                var mainScreen: UIScreen
+                if #available(iOS 16.0, *) {
+                    let window = UIApplication.shared.connectedScenes.flatMap { ($0 as? UIWindowScene)?.windows ?? [] }.first(where: { $0.isKeyWindow })
+                    mainScreen = window!.windowScene!.screen
+                }
+                else {
+                    mainScreen = UIScreen.main
+                }
+                
+                return CGSize(width: mainScreen.bounds.width,
                               height: CGFloat(groups.count) * self.tableView.rowHeight)
             } else {
                 return super.preferredContentSize
