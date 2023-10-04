@@ -16,9 +16,27 @@ class JNPhotoGalleryViewController: UIViewController {
     /// Select Asset Collection Button
     public lazy var selectAssetCollectionButton: UIButton = {
         let button = UIButton()
-        let globalTitleColor = UINavigationBar.appearance().titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor
+        
+        var globalTitleColor: UIColor?
+        
+        // Setup appearance
+        if #available(iOS 13.0, *) {
+            globalTitleColor = self.navigationController?.navigationBar.standardAppearance.buttonAppearance.normal.titleTextAttributes[NSAttributedString.Key.foregroundColor] as? UIColor
+        }else{
+            globalTitleColor = UINavigationBar.appearance().titleTextAttributes?[NSAttributedString.Key.foregroundColor] as? UIColor
+        }
+  
         button.setTitleColor(globalTitleColor ?? UIColor.black, for: .normal)
-        let globalTitleFont = UINavigationBar.appearance().titleTextAttributes?[NSAttributedString.Key.font] as? UIFont
+        
+        var globalTitleFont: UIFont?
+        
+        // Setup appearance
+        if #available(iOS 13.0, *) {
+            globalTitleFont = self.navigationController?.navigationBar.standardAppearance.buttonAppearance.normal.titleTextAttributes[NSAttributedString.Key.font] as? UIFont
+        }else{
+            globalTitleFont = UINavigationBar.appearance().titleTextAttributes?[NSAttributedString.Key.font] as? UIFont
+        }
+        
         button.titleLabel!.font = globalTitleFont ?? UIFont.boldSystemFont(ofSize: 18.0)
         button.addTarget(self, action: #selector(self.didClickSelectAssetCollectionButton), for: .touchUpInside)
         return button
@@ -104,6 +122,9 @@ class JNPhotoGalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set Background Color
+        self.view.backgroundColor = UIColor.white
         
         // Init assets manager
         self.assetsManager = JNAssetsManager()
@@ -275,12 +296,7 @@ class JNPhotoGalleryViewController: UIViewController {
         
         // Add change settings action
         actionSheet.addAction(UIAlertAction(title: self.localizationConfiguration.limitedAccessWarningView.openSettingsAction, style: .default) { _ in
-            
-            if #available(iOS 10.0, *) {
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(URL(string: UIApplication.openSettingsURLString)!)
-            }
         })
         
         // Add cancel action
@@ -296,40 +312,10 @@ class JNPhotoGalleryViewController: UIViewController {
      Init navigation item
      */
     private func initNavigationItem() {
-        
-        if #available(iOS 11.0, *) {
-            
-            // Set Large Title Display Mode
-            self.navigationItem.largeTitleDisplayMode = UINavigationItem.LargeTitleDisplayMode.never
-            
-            if #available(iOS 13.0, *) {
-                
-                // Setup appearance
-                let appearance = UINavigationBarAppearance()
-                
-                // Configure With Opaque Background
-                appearance.configureWithOpaqueBackground()
-                
-                // Set Background
-                appearance.backgroundColor = UIColor.white
-                
-                // Reset Shadow Image
-                appearance.shadowImage = nil
-                
-                // Set scroll edge and standard appearance
-                self.navigationController?.navigationBar.scrollEdgeAppearance =  appearance
-                self.navigationController?.navigationBar.standardAppearance = appearance
-            }
-        }
-        
-        // Setup navigation bar
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.default
-        self.navigationController?.navigationBar.isTranslucent = false
-        
+
         // Set left bar button item
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: self.localizationConfiguration.cancelString, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickCancelButton))
-        
+
         // Setup right bar button item
         self.setupRightBarButtonItem()
     }
@@ -358,6 +344,11 @@ class JNPhotoGalleryViewController: UIViewController {
      Did click cancel button
      */
     @objc private func didClickCancelButton() {
+        
+        // Call delegate
+        self.delegate?.galleryViewControllerDidCancelPicker()
+        
+        // Close View Controller
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -560,7 +551,7 @@ class JNPhotoGalleryViewController: UIViewController {
     private func updateSelectAssetCollectionButton() {
         let collectionName = self.selectedAssetCollection?.localizedTitle ?? ""
         self.selectAssetCollectionButton.isEnabled = !self.collectionsList.isEmpty
-        self.selectAssetCollectionButton.setTitle(collectionName + (!self.collectionsList.isEmpty ? "  \u{25be}" : "" ), for: .normal)
+        self.selectAssetCollectionButton.setTitle(collectionName + (!self.collectionsList.isEmpty ? " ▾" : "" ), for: .normal)
         self.selectAssetCollectionButton.sizeToFit()
         self.navigationItem.titleView = self.selectAssetCollectionButton
     }
@@ -728,6 +719,11 @@ public protocol JNPhotoGalleryViewControllerDelegate: NSObjectProtocol {
      - Parameter selectedMediaCount: Selected media Count
      */
     func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int)
+    
+    /**
+     Did cancel picker.
+     */
+    func galleryViewControllerDidCancelPicker()
 }
 
 // MARK: - UICollectionViewDelegate
