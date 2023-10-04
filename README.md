@@ -89,7 +89,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Author
 
-mohammadnabulsi, mohammad.s.nabulsi@gmail.com
+Jayel Zaghmoutt, mohammad.s.nabulsi@gmail.com
 
 ## License
 
