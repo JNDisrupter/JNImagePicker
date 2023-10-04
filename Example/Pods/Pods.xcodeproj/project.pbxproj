@@ -3,366 +3,340 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09E881F14B7BDF73EC3C88AA9204154D /* CollectionViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2380937C372A23C018C7EDCF03A9B0 /* CollectionViewRepresentable.swift */; };
-		230D4AE378F9835C5AFA702BEC155333 /* Pods-JNImagePicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A4BE04BD390C42806DF9EE95AD6B5B63 /* Pods-JNImagePicker_Tests-dummy.m */; };
-		264637153F5071CCBE19A2D57D6C9D3F /* Pods-JNImagePicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C84E2C7656BD58C7F2FF2EE177923C8D /* Pods-JNImagePicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		26E29A890B54F1E8271F9CB4532DC983 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		2838798B6BEB6079E0A454656A2DDAE7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1516DB8F7D3046B0C2DCA234A8FF5F3E /* Media.xcassets */; };
-		34C85DF7F293162965CA33C21FACEA20 /* JNPhotoGalleryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D898A81AA79F6BB016D20EE76B7A6DC1 /* JNPhotoGalleryCollectionViewLayout.swift */; };
-		4893310B26411FC200CC7C5B /* JNImagePickerLocalizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4893310A26411FC200CC7C5B /* JNImagePickerLocalizationConfiguration.swift */; };
-		4F57AB28117BE7D200CC3C25F30388E1 /* JNAssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9672BAE6544265CBB7CA2CB30719210 /* JNAssetsManager.swift */; };
-		61D59D65E516AE20FFC65BAEBD4D4535 /* AssetCollectionSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7952F6E4EB067A85A813ED7ECD9434D /* AssetCollectionSelectionTableViewCell.swift */; };
-		6287FD2295CA3369C3F474831A10C3B5 /* JNCameraCollectionViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE8D41B9072DFABA0D3DBDD3955FA0E /* JNCameraCollectionViewCellRepresentable.swift */; };
-		73061C9F1B4C54B583E6016B2F80AD23 /* AssetCollectionSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 124F46D6CBE4C70EC42BBCF920C285D6 /* AssetCollectionSelectionTableViewCell.xib */; };
-		807728F1A63FBE99F94FFD7175CB0417 /* JNImageCollectionViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F3AD3616C63DC1A065BDF2EDDCFD /* JNImageCollectionViewCellRepresentable.swift */; };
-		80ADF71BB4A9340EA40D59720BB2F76E /* AssetCollectionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072E115E0D551746592E90ED0DB3241 /* AssetCollectionSelectionViewController.swift */; };
-		81D6832C5E2E94C51FB856AC380184D2 /* JNPhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE1459886967B7B4BDC5D9EE240F55E /* JNPhotoGalleryViewController.swift */; };
-		832441B0ED71E80126B2E2DD11D5B915 /* JNCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4BFD57428C98EEDEA79CD2A2E858E9 /* JNCameraCollectionViewCell.swift */; };
-		8882A42816F6FF93409164DD57A10CEB /* JNPhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5045B41B1A0EA68582DFE40826A56508 /* JNPhotoGalleryViewModel.swift */; };
-		93287A1ABCCD1014BE368C30A234BDE7 /* Pods-JNImagePicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 836130DF0554D20C32155396C19367C2 /* Pods-JNImagePicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		99BBC09FE43FC12E8B6DAFF917A94355 /* JNImagePicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F1306A2A46775D30749DCC504F695965 /* JNImagePicker-dummy.m */; };
-		9C049BFD4F9A9613045EBBE818D71F47 /* Pods-JNImagePicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CA817E87672C10A5F11108ADCA985035 /* Pods-JNImagePicker_Example-dummy.m */; };
-		A81F06E95D635AE145D70B350DA477E0 /* JNCameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D4CB420E60209CAACB7F38FF3A9CA8A /* JNCameraCollectionViewCell.xib */; };
-		B174399B3160E30DC55E42C30E1FB591 /* JNImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68FE62B2EB33D49F5D112DCB0806E9 /* JNImagePickerViewController.swift */; };
-		B476D7C225FA97F5228F13A99960BE74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		C255D4DBBCFA9DCEDE06E7D56BEBC9D2 /* JNImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75759262BD57630A7B592B4CD37E197D /* JNImageCollectionViewCell.xib */; };
-		C50FF1E8881211FB7AD2576E68AA0922 /* JNCameraPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59851ACC8BB13D211ACB3C744882559E /* JNCameraPickerViewController.swift */; };
-		C5C8073B0D285350966D29DF84CDF47E /* JNImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AF388EAEC1B048CD00241C292F02DB /* JNImageCollectionViewCell.swift */; };
-		DACF84471111D80CD5FFF0DE7E1E1E64 /* JNImagePicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 95F504919364CE9E35835BD1825646CD /* JNImagePicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF7587D1CAF06A7882A457E1E72A51B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */; };
-		F688F02165B51EA40B0FD5DDBD6D804D /* JNAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362396139D44CEF2EC7EDED15159E452 /* JNAsset.swift */; };
+		020517229350E0CA7691EDBCC460DE70 /* Pods-JNImagePicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A706289C2F00042BDA53B84D8709AFF /* Pods-JNImagePicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		041BF9AE0CAC03FBCE31EA4EE2B9DB17 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		12E28B61652170628BE95264CBB56399 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		1C57D7744B7605EE0071104FD2600523 /* JNCameraCollectionViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E9E5BFC58E02F29D623319C160E92C /* JNCameraCollectionViewCellRepresentable.swift */; };
+		275C0B76ABC00A6C49BAD7D4FDB55F01 /* JNPhotoGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AC54EB6ADFC49CB1522E553398EE77 /* JNPhotoGalleryViewModel.swift */; };
+		27D1658F0DF34CC8E2D3ADAE7FFDB86F /* Pods-JNImagePicker_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B10A89F89A1EC41D985273A7D6B6A /* Pods-JNImagePicker_Example-dummy.m */; };
+		3B8B1F6DE587F4F7A9D48DC14EB6593C /* Pods-JNImagePicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECC79975FAFEFDC2D5781145EB154E1 /* Pods-JNImagePicker_Tests-dummy.m */; };
+		3DBA9A1E12C079F78ECBA09FB6522DFB /* Pods-JNImagePicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A588CEA4EBF3503107632FB9FD9E9F /* Pods-JNImagePicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48D13523A7A73D15CBCDFF884F3554C9 /* JNImagePickerLocalizationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B925E16729477573B5150AD991AE05 /* JNImagePickerLocalizationConfiguration.swift */; };
+		59BB90C4ACED4D1731D68F43A475E1C5 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B5DE4010531F3C3B6337EA6701261D /* Media.xcassets */; };
+		64020949598DE7366BB40C767904FE17 /* JNCameraPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAFCAA67BED82B4BA85C3D74BEF2C71 /* JNCameraPickerViewController.swift */; };
+		6404CA3E0E9292A022BACD3A4C0D1B86 /* JNPhotoGalleryCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA389C344FFE5D26CA5357B7F5AC636F /* JNPhotoGalleryCollectionViewLayout.swift */; };
+		6814A5BC33329B1DEEAA472F0C6AFCB1 /* JNCameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3470671EC070945CBCE6F95F6FA05D1 /* JNCameraCollectionViewCell.swift */; };
+		713AAA091372A8E53902EB30E661A5AB /* AssetCollectionSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 740C24F06DCA7859768E2F3B925F7F61 /* AssetCollectionSelectionTableViewCell.xib */; };
+		7582E2F0A352A92027BE60784949966B /* JNImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5CE5C83E51DED8D1F9AC8B382E71E /* JNImagePickerViewController.swift */; };
+		7A87CD2483D44452B8CBB9F192A67E90 /* JNImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BEFF0FA325AACC10F8B21F0698812D9 /* JNImageCollectionViewCell.xib */; };
+		843FE00BF4269BF5EDA3D343DC1ABDB7 /* JNPhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF28581A6604E66D11DE237445306E8 /* JNPhotoGalleryViewController.swift */; };
+		A054D7834A793ADA1D27719264238A0B /* JNImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E1DFA7B03DF060959E5129D49879EF /* JNImageCollectionViewCell.swift */; };
+		A14E00310D3B5D21016930E42A53CFB0 /* AssetCollectionSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AE847D6EFEF660DAE1997BC9A33278 /* AssetCollectionSelectionViewController.swift */; };
+		AD662CE01A28C5EEBEA70802600D647C /* JNAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E188E0C9B132D7DB3911E459B65777DB /* JNAsset.swift */; };
+		B38B0E6A098974F9BD9F72E9848BB15D /* JNImagePicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F4749F67FD3FF1E8908E10D6CBFBD068 /* JNImagePicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB001B4973F6DC12895B2B22A46557FA /* AssetCollectionSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D0C5B937B8389046ED6D2F56FA6CC /* AssetCollectionSelectionTableViewCell.swift */; };
+		BCF692FC8695F76EEB7B6E196AEFBBA4 /* JNCameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19CCEA1B4C3A8D488CA7999BAFB8F31B /* JNCameraCollectionViewCell.xib */; };
+		BFAAAC173B3E14FC2A0BC6B3C1657477 /* CollectionViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B48D6CAC6BEC9E13B8CE8891EAF4404 /* CollectionViewRepresentable.swift */; };
+		C53D319C4271855ED48B66BE048EF1CA /* JNAssetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA58B5922CAD76E2F0DD04472FE468C /* JNAssetsManager.swift */; };
+		DEC6C87DEEF68306675478193F7CEF2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		DF9C0DC41876D3CBAE959E7840E25AC3 /* JNImageCollectionViewCellRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE91F137C414499BD90608F64F33319A /* JNImageCollectionViewCellRepresentable.swift */; };
+		E034C7CFEFDB60D75A4C1FDD82898CDB /* JNImagePicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8538633E20279851C3103B861D785BE9 /* JNImagePicker-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		06D55A043FE8055F8B2FA1A2986F2B39 /* PBXContainerItemProxy */ = {
+		182E0DB1878D738FD14368BC27975386 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9DD5914C2A0D7D465AD0AEA5BC24C1D6;
+			remoteGlobalIDString = FD34862EB8C83D6D54A2732208A8EBC1;
 			remoteInfo = JNImagePicker;
 		};
-		9EADA2D675A427D6D4FA60DA95F29EE0 /* PBXContainerItemProxy */ = {
+		B3C3B24B3E456509A49FCC3993233B61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1F337612903E289A13A3BAC90D5ABC0C;
+			remoteGlobalIDString = A058979E244E76806B237793495A5BD0;
 			remoteInfo = "Pods-JNImagePicker_Example";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06CC60215AE279CD7F5972FE81864C10 /* Pods_JNImagePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		08BC4C50033F5BE81A27B03496731319 /* Pods-JNImagePicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Example.release.xcconfig"; sourceTree = "<group>"; };
-		124F46D6CBE4C70EC42BBCF920C285D6 /* AssetCollectionSelectionTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = AssetCollectionSelectionTableViewCell.xib; sourceTree = "<group>"; };
-		1516DB8F7D3046B0C2DCA234A8FF5F3E /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = JNImagePicker/Assets/Media.xcassets; sourceTree = "<group>"; };
-		1B4BFD57428C98EEDEA79CD2A2E858E9 /* JNCameraCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraCollectionViewCell.swift; sourceTree = "<group>"; };
-		1D4CB420E60209CAACB7F38FF3A9CA8A /* JNCameraCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = JNCameraCollectionViewCell.xib; sourceTree = "<group>"; };
-		1EE1459886967B7B4BDC5D9EE240F55E /* JNPhotoGalleryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryViewController.swift; sourceTree = "<group>"; };
-		203E03C13A1441DA43152EA9040F1A32 /* JNImagePicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNImagePicker.xcconfig; sourceTree = "<group>"; };
-		3072E115E0D551746592E90ED0DB3241 /* AssetCollectionSelectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetCollectionSelectionViewController.swift; sourceTree = "<group>"; };
-		31B1A2039B3C004AC4815FF1925A395E /* JNImagePicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JNImagePicker-Info.plist"; sourceTree = "<group>"; };
-		362396139D44CEF2EC7EDED15159E452 /* JNAsset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNAsset.swift; path = JNImagePicker/Classes/JNAsset.swift; sourceTree = "<group>"; };
-		39AF388EAEC1B048CD00241C292F02DB /* JNImageCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		4108AD7E2833CD934ECF8BB671B0183F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		4726A4D6689D9DBE83F90C1D57993FB2 /* Pods_JNImagePicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4893310A26411FC200CC7C5B /* JNImagePickerLocalizationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JNImagePickerLocalizationConfiguration.swift; sourceTree = "<group>"; };
-		48A9D68B7BA1C1A21A3212F6C423F604 /* Pods-JNImagePicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNImagePicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4EE8D41B9072DFABA0D3DBDD3955FA0E /* JNCameraCollectionViewCellRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraCollectionViewCellRepresentable.swift; sourceTree = "<group>"; };
-		5045B41B1A0EA68582DFE40826A56508 /* JNPhotoGalleryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryViewModel.swift; sourceTree = "<group>"; };
-		5821FC04015EB76FEA15613B72D43BDD /* JNImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JNImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59851ACC8BB13D211ACB3C744882559E /* JNCameraPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraPickerViewController.swift; sourceTree = "<group>"; };
-		5B0CA78CE691D727FBB2B7E23C763FFE /* JNImagePicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNImagePicker-prefix.pch"; sourceTree = "<group>"; };
-		5E6A6436AC5172E28D706C2B45C3C370 /* Pods-JNImagePicker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6F0BFB0507C08D6902BB11E9318830A0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		6F3AED35D0A5C30F78027BC7D4A2E7E1 /* JNImagePicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JNImagePicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		75759262BD57630A7B592B4CD37E197D /* JNImageCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = JNImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		836130DF0554D20C32155396C19367C2 /* Pods-JNImagePicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNImagePicker_Tests-umbrella.h"; sourceTree = "<group>"; };
-		8D6C67D004A8565C4F76112C8F97829D /* Pods-JNImagePicker_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Tests-Info.plist"; sourceTree = "<group>"; };
-		919C061217CC795C35E922719B374FFC /* Pods-JNImagePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		95F504919364CE9E35835BD1825646CD /* JNImagePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNImagePicker-umbrella.h"; sourceTree = "<group>"; };
-		9722F7E932C1298B440D3DC22B7F7BB7 /* Pods-JNImagePicker_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Example-Info.plist"; sourceTree = "<group>"; };
-		9B68FE62B2EB33D49F5D112DCB0806E9 /* JNImagePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNImagePickerViewController.swift; path = JNImagePicker/Classes/JNImagePickerViewController.swift; sourceTree = "<group>"; };
+		08EEB56B7AE6ED4899977B88C3A64B74 /* Pods-JNImagePicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Example.release.xcconfig"; sourceTree = "<group>"; };
+		08F89A113CC664DFF436BE8CE502A029 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		0B48D6CAC6BEC9E13B8CE8891EAF4404 /* CollectionViewRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewRepresentable.swift; sourceTree = "<group>"; };
+		0CAFCAA67BED82B4BA85C3D74BEF2C71 /* JNCameraPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraPickerViewController.swift; sourceTree = "<group>"; };
+		0CC5CE5C83E51DED8D1F9AC8B382E71E /* JNImagePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNImagePickerViewController.swift; path = JNImagePicker/Classes/JNImagePickerViewController.swift; sourceTree = "<group>"; };
+		19CCEA1B4C3A8D488CA7999BAFB8F31B /* JNCameraCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = JNCameraCollectionViewCell.xib; sourceTree = "<group>"; };
+		1BEFF0FA325AACC10F8B21F0698812D9 /* JNImageCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = JNImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		224D0C5B937B8389046ED6D2F56FA6CC /* AssetCollectionSelectionTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetCollectionSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		24B925E16729477573B5150AD991AE05 /* JNImagePickerLocalizationConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImagePickerLocalizationConfiguration.swift; sourceTree = "<group>"; };
+		2ECC79975FAFEFDC2D5781145EB154E1 /* Pods-JNImagePicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNImagePicker_Tests-dummy.m"; sourceTree = "<group>"; };
+		332FED64B41990ABF376571C6669AB5F /* Pods-JNImagePicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNImagePicker_Tests.modulemap"; sourceTree = "<group>"; };
+		380AA57F3D32707584413F906A99F9DB /* JNImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNImagePicker.release.xcconfig; sourceTree = "<group>"; };
+		3F1B10A89F89A1EC41D985273A7D6B6A /* Pods-JNImagePicker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNImagePicker_Example-dummy.m"; sourceTree = "<group>"; };
+		3FA58B5922CAD76E2F0DD04472FE468C /* JNAssetsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNAssetsManager.swift; sourceTree = "<group>"; };
+		44E1DFA7B03DF060959E5129D49879EF /* JNImageCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A706289C2F00042BDA53B84D8709AFF /* Pods-JNImagePicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNImagePicker_Example-umbrella.h"; sourceTree = "<group>"; };
+		4AD0E40CC61E67DA9981CA1D3DD3F491 /* JNImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JNImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		602412F3B62040FF3D9850372A3701F3 /* Pods_JNImagePicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63B5DE4010531F3C3B6337EA6701261D /* Media.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = JNImagePicker/Assets/Media.xcassets; sourceTree = "<group>"; };
+		6590CD412773A5CD5246A90AEE6B954D /* JNImagePicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNImagePicker-prefix.pch"; sourceTree = "<group>"; };
+		66AE847D6EFEF660DAE1997BC9A33278 /* AssetCollectionSelectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetCollectionSelectionViewController.swift; sourceTree = "<group>"; };
+		68236B1BB87B122BD21AA563F7C4B1E9 /* Pods-JNImagePicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNImagePicker_Example.modulemap"; sourceTree = "<group>"; };
+		6D4AD5ACA78A61E9EC1B9C79943897A2 /* Pods-JNImagePicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNImagePicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6ED2352144C09304E3BD0F57BF69AF88 /* Pods-JNImagePicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		72463270BE4B18F30E4604D485DF33C7 /* Pods-JNImagePicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		740C24F06DCA7859768E2F3B925F7F61 /* AssetCollectionSelectionTableViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = AssetCollectionSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		768B71E59D58076AE64E9DA6F6C5C388 /* JNImagePicker.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = JNImagePicker.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		76C752F9B6D342362FD15DD2E0F393D6 /* Pods-JNImagePicker_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Example-Info.plist"; sourceTree = "<group>"; };
+		8538633E20279851C3103B861D785BE9 /* JNImagePicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JNImagePicker-dummy.m"; sourceTree = "<group>"; };
+		8B3D07A04FF17ED355DA9E29FB33944C /* JNImagePicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "JNImagePicker-Info.plist"; sourceTree = "<group>"; };
+		8C7CA74AC05F88688C9C48A678AE39CE /* Pods-JNImagePicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNImagePicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		93E9E5BFC58E02F29D623319C160E92C /* JNCameraCollectionViewCellRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraCollectionViewCellRepresentable.swift; sourceTree = "<group>"; };
+		98EC3C204F44938056ADF8440775EC63 /* Pods-JNImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9B91B3D7D49E00C31D24CF5760EFE028 /* Pods-JNImagePicker_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A4BE04BD390C42806DF9EE95AD6B5B63 /* Pods-JNImagePicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNImagePicker_Tests-dummy.m"; sourceTree = "<group>"; };
-		AE2380937C372A23C018C7EDCF03A9B0 /* CollectionViewRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CollectionViewRepresentable.swift; sourceTree = "<group>"; };
-		B3F577F528A09251F8975DA3711956B5 /* Pods-JNImagePicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNImagePicker_Example.modulemap"; sourceTree = "<group>"; };
-		B559B714B7CE6F7992C3493F465B4406 /* Pods-JNImagePicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		BD02F3AD3616C63DC1A065BDF2EDDCFD /* JNImageCollectionViewCellRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImageCollectionViewCellRepresentable.swift; sourceTree = "<group>"; };
-		BD4F4428D9CAE0BB7C039911877F50C8 /* Pods-JNImagePicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JNImagePicker_Example-frameworks.sh"; sourceTree = "<group>"; };
-		C1052A9C428F42B1B23B32E10D0A3396 /* JNImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JNImagePicker.modulemap; sourceTree = "<group>"; };
-		C84E2C7656BD58C7F2FF2EE177923C8D /* Pods-JNImagePicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNImagePicker_Example-umbrella.h"; sourceTree = "<group>"; };
-		CA817E87672C10A5F11108ADCA985035 /* Pods-JNImagePicker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JNImagePicker_Example-dummy.m"; sourceTree = "<group>"; };
-		CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D6D872CC0C679B5BF44DA054AF2EE55C /* Pods-JNImagePicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		D7952F6E4EB067A85A813ED7ECD9434D /* AssetCollectionSelectionTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AssetCollectionSelectionTableViewCell.swift; sourceTree = "<group>"; };
-		D898A81AA79F6BB016D20EE76B7A6DC1 /* JNPhotoGalleryCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryCollectionViewLayout.swift; sourceTree = "<group>"; };
-		E7548A572F4E47835BBF218E7D92D3E6 /* Pods-JNImagePicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		E9672BAE6544265CBB7CA2CB30719210 /* JNAssetsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNAssetsManager.swift; sourceTree = "<group>"; };
-		F1306A2A46775D30749DCC504F695965 /* JNImagePicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JNImagePicker-dummy.m"; sourceTree = "<group>"; };
-		F308B84D9D87BBDEF0B3AE05C916472B /* Pods-JNImagePicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JNImagePicker_Tests.modulemap"; sourceTree = "<group>"; };
-		F36E5503F86CE923EDEA5D43B9EC4ED5 /* Pods-JNImagePicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JNImagePicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A42AD45277FDA910438171872A8D1344 /* Pods-JNImagePicker_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JNImagePicker_Tests-Info.plist"; sourceTree = "<group>"; };
+		A5A588CEA4EBF3503107632FB9FD9E9F /* Pods-JNImagePicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JNImagePicker_Tests-umbrella.h"; sourceTree = "<group>"; };
+		AB1B72D2D6E90AFD080B6CAD95FCD7E7 /* JNImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JNImagePicker.debug.xcconfig; sourceTree = "<group>"; };
+		BA389C344FFE5D26CA5357B7F5AC636F /* JNPhotoGalleryCollectionViewLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryCollectionViewLayout.swift; sourceTree = "<group>"; };
+		BE91F137C414499BD90608F64F33319A /* JNImageCollectionViewCellRepresentable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNImageCollectionViewCellRepresentable.swift; sourceTree = "<group>"; };
+		C938F54DE526FE9674FD0416CDB1C6E6 /* JNImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = JNImagePicker.modulemap; sourceTree = "<group>"; };
+		CFD0BFD3A38913B577DA208285ECE26D /* Pods_JNImagePicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JNImagePicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF842A6A2FA882E86A5ABB77E9EBA619 /* Pods-JNImagePicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JNImagePicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		E188E0C9B132D7DB3911E459B65777DB /* JNAsset.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JNAsset.swift; path = JNImagePicker/Classes/JNAsset.swift; sourceTree = "<group>"; };
+		E3470671EC070945CBCE6F95F6FA05D1 /* JNCameraCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNCameraCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9AC54EB6ADFC49CB1522E553398EE77 /* JNPhotoGalleryViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryViewModel.swift; sourceTree = "<group>"; };
+		F4749F67FD3FF1E8908E10D6CBFBD068 /* JNImagePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JNImagePicker-umbrella.h"; sourceTree = "<group>"; };
+		F9E9DF6237361C32E40E63C71411DDA4 /* Pods-JNImagePicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JNImagePicker_Example-frameworks.sh"; sourceTree = "<group>"; };
+		FCF28581A6604E66D11DE237445306E8 /* JNPhotoGalleryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = JNPhotoGalleryViewController.swift; sourceTree = "<group>"; };
+		FE1E7F82FAEF1078139080F7A0855E1C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0F7455E42D3DB880808872E850BF040B /* Frameworks */ = {
+		42CF4F982B32750F26E7CBF931375247 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF7587D1CAF06A7882A457E1E72A51B7 /* Foundation.framework in Frameworks */,
+				DEC6C87DEEF68306675478193F7CEF2A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84B0DCE48D05C17A57EF000668E51238 /* Frameworks */ = {
+		717EDCD3F53A959316D854F00E3D9C72 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26E29A890B54F1E8271F9CB4532DC983 /* Foundation.framework in Frameworks */,
+				041BF9AE0CAC03FBCE31EA4EE2B9DB17 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6BC60A20B35BE128C4B6EFE350F85F7 /* Frameworks */ = {
+		8D9AA07BE51B264A3C695FDD944BEC7F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B476D7C225FA97F5228F13A99960BE74 /* Foundation.framework in Frameworks */,
+				12E28B61652170628BE95264CBB56399 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A859CDEC67979B43FC72DCDCD1C5A43 /* AssetCollectionSelectionViewController */ = {
+		0EEEC851E61189337D4265EFC603A901 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3072E115E0D551746592E90ED0DB3241 /* AssetCollectionSelectionViewController.swift */,
-				4035F557B0B78CCE23BEE278DE71751C /* Cells */,
-			);
-			path = AssetCollectionSelectionViewController;
-			sourceTree = "<group>";
-		};
-		205340CF3C0F8D5120757997A75445E6 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C1052A9C428F42B1B23B32E10D0A3396 /* JNImagePicker.modulemap */,
-				203E03C13A1441DA43152EA9040F1A32 /* JNImagePicker.xcconfig */,
-				F1306A2A46775D30749DCC504F695965 /* JNImagePicker-dummy.m */,
-				31B1A2039B3C004AC4815FF1925A395E /* JNImagePicker-Info.plist */,
-				5B0CA78CE691D727FBB2B7E23C763FFE /* JNImagePicker-prefix.pch */,
-				95F504919364CE9E35835BD1825646CD /* JNImagePicker-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/JNImagePicker";
-			sourceTree = "<group>";
-		};
-		26725D69E429C62E99EDCFF4B4678F2D /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				2ED42254CEB6E3B0AD64F73E612F3B0D /* JNCameraCollectionViewCell */,
-				54F202B5D3E8DACA7163A4C78931DAE9 /* JNImageCollectionViewCell */,
+				66C6E9B38A95F2B9F74F37FBAD545352 /* JNCameraCollectionViewCell */,
+				BB929FBF3E9E524721DF647917EA7BA8 /* JNImageCollectionViewCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		2ED42254CEB6E3B0AD64F73E612F3B0D /* JNCameraCollectionViewCell */ = {
+		122FFB5828429FB86822AD63E2D4C02B /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				1B4BFD57428C98EEDEA79CD2A2E858E9 /* JNCameraCollectionViewCell.swift */,
+				768B71E59D58076AE64E9DA6F6C5C388 /* JNImagePicker.podspec */,
+				08F89A113CC664DFF436BE8CE502A029 /* LICENSE */,
+				FE1E7F82FAEF1078139080F7A0855E1C /* README.md */,
 			);
-			path = JNCameraCollectionViewCell;
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		3507B9E0EBE2D912FEC7A9F71FEF727A /* PhotoGallery */ = {
+		1335CB70C2EECE47D9E0F6A6E2E47A7A /* AssetCollectionSelectionTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				E9672BAE6544265CBB7CA2CB30719210 /* JNAssetsManager.swift */,
-				D898A81AA79F6BB016D20EE76B7A6DC1 /* JNPhotoGalleryCollectionViewLayout.swift */,
-				1EE1459886967B7B4BDC5D9EE240F55E /* JNPhotoGalleryViewController.swift */,
-				5045B41B1A0EA68582DFE40826A56508 /* JNPhotoGalleryViewModel.swift */,
-				1A859CDEC67979B43FC72DCDCD1C5A43 /* AssetCollectionSelectionViewController */,
-				26725D69E429C62E99EDCFF4B4678F2D /* Cells */,
-			);
-			name = PhotoGallery;
-			path = JNImagePicker/Classes/PhotoGallery;
-			sourceTree = "<group>";
-		};
-		397DE2160A9E55307F7FD9CBA44A3561 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				59851ACC8BB13D211ACB3C744882559E /* JNCameraPickerViewController.swift */,
-			);
-			name = Camera;
-			path = JNImagePicker/Classes/Camera;
-			sourceTree = "<group>";
-		};
-		3EDBE39226DBE690C9BF52ED32FB762B /* AssetCollectionSelectionTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				124F46D6CBE4C70EC42BBCF920C285D6 /* AssetCollectionSelectionTableViewCell.xib */,
+				740C24F06DCA7859768E2F3B925F7F61 /* AssetCollectionSelectionTableViewCell.xib */,
 			);
 			name = AssetCollectionSelectionTableViewCell;
 			path = JNImagePicker/Assets/AssetCollectionSelectionTableViewCell;
 			sourceTree = "<group>";
 		};
-		4035F557B0B78CCE23BEE278DE71751C /* Cells */ = {
+		19755EAC403C57216A46C6F58D7F5B04 /* AssetCollectionSelectionTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				5C6DAE656E98510FB228B095EBC37D22 /* AssetCollectionSelectionTableViewCell */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		4893310926411FC200CC7C5B /* LocalizationConfiguration */ = {
-			isa = PBXGroup;
-			children = (
-				4893310A26411FC200CC7C5B /* JNImagePickerLocalizationConfiguration.swift */,
-			);
-			name = LocalizationConfiguration;
-			path = JNImagePicker/Classes/LocalizationConfiguration;
-			sourceTree = "<group>";
-		};
-		54F202B5D3E8DACA7163A4C78931DAE9 /* JNImageCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				39AF388EAEC1B048CD00241C292F02DB /* JNImageCollectionViewCell.swift */,
-			);
-			path = JNImageCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		5C6DAE656E98510FB228B095EBC37D22 /* AssetCollectionSelectionTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				D7952F6E4EB067A85A813ED7ECD9434D /* AssetCollectionSelectionTableViewCell.swift */,
+				224D0C5B937B8389046ED6D2F56FA6CC /* AssetCollectionSelectionTableViewCell.swift */,
 			);
 			path = AssetCollectionSelectionTableViewCell;
 			sourceTree = "<group>";
 		};
-		5E92E4B149526DED86863C96936D3F83 /* Targets Support Files */ = {
+		218DD3D2C7BA3860ACB177D2D131F43F /* JNImageCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				9855CD0D19A841DCEAD841198D91E361 /* Pods-JNImagePicker_Example */,
-				9B9D50041AE4F0F7B70DAF38E1260E6E /* Pods-JNImagePicker_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		6D5C5D02E27C393B2B4B2C974AA06A47 /* JNImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				4893310926411FC200CC7C5B /* LocalizationConfiguration */,
-				362396139D44CEF2EC7EDED15159E452 /* JNAsset.swift */,
-				9B68FE62B2EB33D49F5D112DCB0806E9 /* JNImagePickerViewController.swift */,
-				397DE2160A9E55307F7FD9CBA44A3561 /* Camera */,
-				3507B9E0EBE2D912FEC7A9F71FEF727A /* PhotoGallery */,
-				B7EA3206F3EA48694C1A44D5DA2C1DB1 /* Pod */,
-				CC8F3CCA552A66989DE052126AB80D5D /* Representable */,
-				D66F0814BA626B645EA5F28CB0F635C9 /* Resources */,
-				205340CF3C0F8D5120757997A75445E6 /* Support Files */,
-			);
-			name = JNImagePicker;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		97A1CBC31C57E14DC5F307817BA15BDB /* JNImageCollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				75759262BD57630A7B592B4CD37E197D /* JNImageCollectionViewCell.xib */,
+				1BEFF0FA325AACC10F8B21F0698812D9 /* JNImageCollectionViewCell.xib */,
 			);
 			name = JNImageCollectionViewCell;
 			path = JNImagePicker/Assets/JNImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		9855CD0D19A841DCEAD841198D91E361 /* Pods-JNImagePicker_Example */ = {
+		2D0C713AF49ECC15FE3D91FAD20173FA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B3F577F528A09251F8975DA3711956B5 /* Pods-JNImagePicker_Example.modulemap */,
-				48A9D68B7BA1C1A21A3212F6C423F604 /* Pods-JNImagePicker_Example-acknowledgements.markdown */,
-				B559B714B7CE6F7992C3493F465B4406 /* Pods-JNImagePicker_Example-acknowledgements.plist */,
-				CA817E87672C10A5F11108ADCA985035 /* Pods-JNImagePicker_Example-dummy.m */,
-				BD4F4428D9CAE0BB7C039911877F50C8 /* Pods-JNImagePicker_Example-frameworks.sh */,
-				9722F7E932C1298B440D3DC22B7F7BB7 /* Pods-JNImagePicker_Example-Info.plist */,
-				C84E2C7656BD58C7F2FF2EE177923C8D /* Pods-JNImagePicker_Example-umbrella.h */,
-				E7548A572F4E47835BBF218E7D92D3E6 /* Pods-JNImagePicker_Example.debug.xcconfig */,
-				08BC4C50033F5BE81A27B03496731319 /* Pods-JNImagePicker_Example.release.xcconfig */,
+				C938F54DE526FE9674FD0416CDB1C6E6 /* JNImagePicker.modulemap */,
+				8538633E20279851C3103B861D785BE9 /* JNImagePicker-dummy.m */,
+				8B3D07A04FF17ED355DA9E29FB33944C /* JNImagePicker-Info.plist */,
+				6590CD412773A5CD5246A90AEE6B954D /* JNImagePicker-prefix.pch */,
+				F4749F67FD3FF1E8908E10D6CBFBD068 /* JNImagePicker-umbrella.h */,
+				AB1B72D2D6E90AFD080B6CAD95FCD7E7 /* JNImagePicker.debug.xcconfig */,
+				380AA57F3D32707584413F906A99F9DB /* JNImagePicker.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/JNImagePicker";
+			sourceTree = "<group>";
+		};
+		440D6F4C6FCDEB4EF0DB4D52E81150B4 /* LocalizationConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				24B925E16729477573B5150AD991AE05 /* JNImagePickerLocalizationConfiguration.swift */,
+			);
+			name = LocalizationConfiguration;
+			path = JNImagePicker/Classes/LocalizationConfiguration;
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5E92E4B149526DED86863C96936D3F83 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AD49B098711C1B0AFE3F5437CCE9ED7B /* Pods-JNImagePicker_Example */,
+				B94678BC35CFDEAFD379DD223EBB49F1 /* Pods-JNImagePicker_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		66C6E9B38A95F2B9F74F37FBAD545352 /* JNCameraCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E3470671EC070945CBCE6F95F6FA05D1 /* JNCameraCollectionViewCell.swift */,
+			);
+			path = JNCameraCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		720503026A1DC670E064A1B32D0B7087 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				0CAFCAA67BED82B4BA85C3D74BEF2C71 /* JNCameraPickerViewController.swift */,
+			);
+			name = Camera;
+			path = JNImagePicker/Classes/Camera;
+			sourceTree = "<group>";
+		};
+		7425885B8D3A9A31382F80C9E5F66ACE /* AssetCollectionSelectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66AE847D6EFEF660DAE1997BC9A33278 /* AssetCollectionSelectionViewController.swift */,
+				9A517B6B2EE231B2D7D18410437DA7B9 /* Cells */,
+			);
+			path = AssetCollectionSelectionViewController;
+			sourceTree = "<group>";
+		};
+		7FF2426729CC5FAC5020945F96CD39F9 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB34CE87D59C8CAA396341040E62F082 /* JNImagePicker */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		908B9EE9445244344819D0432EA416AF /* Representable */ = {
+			isa = PBXGroup;
+			children = (
+				0B48D6CAC6BEC9E13B8CE8891EAF4404 /* CollectionViewRepresentable.swift */,
+				93E9E5BFC58E02F29D623319C160E92C /* JNCameraCollectionViewCellRepresentable.swift */,
+				BE91F137C414499BD90608F64F33319A /* JNImageCollectionViewCellRepresentable.swift */,
+			);
+			name = Representable;
+			path = JNImagePicker/Classes/Representable;
+			sourceTree = "<group>";
+		};
+		9A517B6B2EE231B2D7D18410437DA7B9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				19755EAC403C57216A46C6F58D7F5B04 /* AssetCollectionSelectionTableViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A1A8BBBEB2B36452506C18DAB04D3187 /* PhotoGallery */ = {
+			isa = PBXGroup;
+			children = (
+				3FA58B5922CAD76E2F0DD04472FE468C /* JNAssetsManager.swift */,
+				BA389C344FFE5D26CA5357B7F5AC636F /* JNPhotoGalleryCollectionViewLayout.swift */,
+				FCF28581A6604E66D11DE237445306E8 /* JNPhotoGalleryViewController.swift */,
+				E9AC54EB6ADFC49CB1522E553398EE77 /* JNPhotoGalleryViewModel.swift */,
+				7425885B8D3A9A31382F80C9E5F66ACE /* AssetCollectionSelectionViewController */,
+				0EEEC851E61189337D4265EFC603A901 /* Cells */,
+			);
+			name = PhotoGallery;
+			path = JNImagePicker/Classes/PhotoGallery;
+			sourceTree = "<group>";
+		};
+		AD49B098711C1B0AFE3F5437CCE9ED7B /* Pods-JNImagePicker_Example */ = {
+			isa = PBXGroup;
+			children = (
+				68236B1BB87B122BD21AA563F7C4B1E9 /* Pods-JNImagePicker_Example.modulemap */,
+				8C7CA74AC05F88688C9C48A678AE39CE /* Pods-JNImagePicker_Example-acknowledgements.markdown */,
+				6ED2352144C09304E3BD0F57BF69AF88 /* Pods-JNImagePicker_Example-acknowledgements.plist */,
+				3F1B10A89F89A1EC41D985273A7D6B6A /* Pods-JNImagePicker_Example-dummy.m */,
+				F9E9DF6237361C32E40E63C71411DDA4 /* Pods-JNImagePicker_Example-frameworks.sh */,
+				76C752F9B6D342362FD15DD2E0F393D6 /* Pods-JNImagePicker_Example-Info.plist */,
+				4A706289C2F00042BDA53B84D8709AFF /* Pods-JNImagePicker_Example-umbrella.h */,
+				DF842A6A2FA882E86A5ABB77E9EBA619 /* Pods-JNImagePicker_Example.debug.xcconfig */,
+				08EEB56B7AE6ED4899977B88C3A64B74 /* Pods-JNImagePicker_Example.release.xcconfig */,
 			);
 			name = "Pods-JNImagePicker_Example";
 			path = "Target Support Files/Pods-JNImagePicker_Example";
 			sourceTree = "<group>";
 		};
-		99D2E6B829317F40FEE7B304B0CA33C1 /* JNCameraCollectionViewCell */ = {
+		B94678BC35CFDEAFD379DD223EBB49F1 /* Pods-JNImagePicker_Tests */ = {
 			isa = PBXGroup;
 			children = (
-				1D4CB420E60209CAACB7F38FF3A9CA8A /* JNCameraCollectionViewCell.xib */,
-			);
-			name = JNCameraCollectionViewCell;
-			path = JNImagePicker/Assets/JNCameraCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		9B055D0CFEA43187E72B03DED11F5662 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CB4607EFCA7C5F75397649E792E2AFCB /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		9B9D50041AE4F0F7B70DAF38E1260E6E /* Pods-JNImagePicker_Tests */ = {
-			isa = PBXGroup;
-			children = (
-				F308B84D9D87BBDEF0B3AE05C916472B /* Pods-JNImagePicker_Tests.modulemap */,
-				F36E5503F86CE923EDEA5D43B9EC4ED5 /* Pods-JNImagePicker_Tests-acknowledgements.markdown */,
-				5E6A6436AC5172E28D706C2B45C3C370 /* Pods-JNImagePicker_Tests-acknowledgements.plist */,
-				A4BE04BD390C42806DF9EE95AD6B5B63 /* Pods-JNImagePicker_Tests-dummy.m */,
-				8D6C67D004A8565C4F76112C8F97829D /* Pods-JNImagePicker_Tests-Info.plist */,
-				836130DF0554D20C32155396C19367C2 /* Pods-JNImagePicker_Tests-umbrella.h */,
-				D6D872CC0C679B5BF44DA054AF2EE55C /* Pods-JNImagePicker_Tests.debug.xcconfig */,
-				919C061217CC795C35E922719B374FFC /* Pods-JNImagePicker_Tests.release.xcconfig */,
+				332FED64B41990ABF376571C6669AB5F /* Pods-JNImagePicker_Tests.modulemap */,
+				6D4AD5ACA78A61E9EC1B9C79943897A2 /* Pods-JNImagePicker_Tests-acknowledgements.markdown */,
+				9B91B3D7D49E00C31D24CF5760EFE028 /* Pods-JNImagePicker_Tests-acknowledgements.plist */,
+				2ECC79975FAFEFDC2D5781145EB154E1 /* Pods-JNImagePicker_Tests-dummy.m */,
+				A42AD45277FDA910438171872A8D1344 /* Pods-JNImagePicker_Tests-Info.plist */,
+				A5A588CEA4EBF3503107632FB9FD9E9F /* Pods-JNImagePicker_Tests-umbrella.h */,
+				98EC3C204F44938056ADF8440775EC63 /* Pods-JNImagePicker_Tests.debug.xcconfig */,
+				72463270BE4B18F30E4604D485DF33C7 /* Pods-JNImagePicker_Tests.release.xcconfig */,
 			);
 			name = "Pods-JNImagePicker_Tests";
 			path = "Target Support Files/Pods-JNImagePicker_Tests";
 			sourceTree = "<group>";
 		};
-		B7EA3206F3EA48694C1A44D5DA2C1DB1 /* Pod */ = {
+		BB929FBF3E9E524721DF647917EA7BA8 /* JNImageCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				6F3AED35D0A5C30F78027BC7D4A2E7E1 /* JNImagePicker.podspec */,
-				6F0BFB0507C08D6902BB11E9318830A0 /* LICENSE */,
-				4108AD7E2833CD934ECF8BB671B0183F /* README.md */,
+				44E1DFA7B03DF060959E5129D49879EF /* JNImageCollectionViewCell.swift */,
 			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		B7EAE15E86DEC200AC4A21F3199CE074 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5821FC04015EB76FEA15613B72D43BDD /* JNImagePicker.framework */,
-				06CC60215AE279CD7F5972FE81864C10 /* Pods_JNImagePicker_Example.framework */,
-				4726A4D6689D9DBE83F90C1D57993FB2 /* Pods_JNImagePicker_Tests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		CC8F3CCA552A66989DE052126AB80D5D /* Representable */ = {
-			isa = PBXGroup;
-			children = (
-				AE2380937C372A23C018C7EDCF03A9B0 /* CollectionViewRepresentable.swift */,
-				4EE8D41B9072DFABA0D3DBDD3955FA0E /* JNCameraCollectionViewCellRepresentable.swift */,
-				BD02F3AD3616C63DC1A065BDF2EDDCFD /* JNImageCollectionViewCellRepresentable.swift */,
-			);
-			name = Representable;
-			path = JNImagePicker/Classes/Representable;
+			path = JNImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				E40818A2C8299CFB2DF7E513F343B256 /* Development Pods */,
+				7FF2426729CC5FAC5020945F96CD39F9 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				B7EAE15E86DEC200AC4A21F3199CE074 /* Products */,
+				F943185E0DC65ED46551E663F77873B3 /* Products */,
 				5E92E4B149526DED86863C96936D3F83 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
@@ -370,87 +344,126 @@
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9B055D0CFEA43187E72B03DED11F5662 /* iOS */,
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D66F0814BA626B645EA5F28CB0F635C9 /* Resources */ = {
+		D9C260F6AA08EB65E8390F4B514A0BDF /* JNCameraCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				1516DB8F7D3046B0C2DCA234A8FF5F3E /* Media.xcassets */,
-				3EDBE39226DBE690C9BF52ED32FB762B /* AssetCollectionSelectionTableViewCell */,
-				99D2E6B829317F40FEE7B304B0CA33C1 /* JNCameraCollectionViewCell */,
-				97A1CBC31C57E14DC5F307817BA15BDB /* JNImageCollectionViewCell */,
+				19CCEA1B4C3A8D488CA7999BAFB8F31B /* JNCameraCollectionViewCell.xib */,
 			);
-			name = Resources;
+			name = JNCameraCollectionViewCell;
+			path = JNImagePicker/Assets/JNCameraCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		E40818A2C8299CFB2DF7E513F343B256 /* Development Pods */ = {
+		EB34CE87D59C8CAA396341040E62F082 /* JNImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				6D5C5D02E27C393B2B4B2C974AA06A47 /* JNImagePicker */,
+				E188E0C9B132D7DB3911E459B65777DB /* JNAsset.swift */,
+				0CC5CE5C83E51DED8D1F9AC8B382E71E /* JNImagePickerViewController.swift */,
+				63B5DE4010531F3C3B6337EA6701261D /* Media.xcassets */,
+				1335CB70C2EECE47D9E0F6A6E2E47A7A /* AssetCollectionSelectionTableViewCell */,
+				720503026A1DC670E064A1B32D0B7087 /* Camera */,
+				D9C260F6AA08EB65E8390F4B514A0BDF /* JNCameraCollectionViewCell */,
+				218DD3D2C7BA3860ACB177D2D131F43F /* JNImageCollectionViewCell */,
+				440D6F4C6FCDEB4EF0DB4D52E81150B4 /* LocalizationConfiguration */,
+				A1A8BBBEB2B36452506C18DAB04D3187 /* PhotoGallery */,
+				122FFB5828429FB86822AD63E2D4C02B /* Pod */,
+				908B9EE9445244344819D0432EA416AF /* Representable */,
+				2D0C713AF49ECC15FE3D91FAD20173FA /* Support Files */,
 			);
-			name = "Development Pods";
+			name = JNImagePicker;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		F943185E0DC65ED46551E663F77873B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4AD0E40CC61E67DA9981CA1D3DD3F491 /* JNImagePicker.framework */,
+				CFD0BFD3A38913B577DA208285ECE26D /* Pods_JNImagePicker_Example.framework */,
+				602412F3B62040FF3D9850372A3701F3 /* Pods_JNImagePicker_Tests.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		348D744085A6585A1F345605E1802C62 /* Headers */ = {
+		9D6DC1EF0519BF13CAE0DF49E01478C5 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93287A1ABCCD1014BE368C30A234BDE7 /* Pods-JNImagePicker_Tests-umbrella.h in Headers */,
+				B38B0E6A098974F9BD9F72E9848BB15D /* JNImagePicker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B36100915E85A92D714A019F2399662 /* Headers */ = {
+		D11B0FBA7A1BA182EBB1DF8D5C55364B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				264637153F5071CCBE19A2D57D6C9D3F /* Pods-JNImagePicker_Example-umbrella.h in Headers */,
+				3DBA9A1E12C079F78ECBA09FB6522DFB /* Pods-JNImagePicker_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B468177CC970961A7083A5C57732AD71 /* Headers */ = {
+		D64C4365CA9F1CD659FA89149217F70C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DACF84471111D80CD5FFF0DE7E1E1E64 /* JNImagePicker-umbrella.h in Headers */,
+				020517229350E0CA7691EDBCC460DE70 /* Pods-JNImagePicker_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		1F337612903E289A13A3BAC90D5ABC0C /* Pods-JNImagePicker_Example */ = {
+		4FAB45E2087B514BD1DE78E6ED914605 /* Pods-JNImagePicker_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCFE1F45B0F0A02C6956BAB2595288D8 /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Example" */;
+			buildConfigurationList = 029C055494CE4D8564C728D8C9952CCC /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Tests" */;
 			buildPhases = (
-				5B36100915E85A92D714A019F2399662 /* Headers */,
-				0B687BE89177AEA49F717D2865CA57A6 /* Sources */,
-				84B0DCE48D05C17A57EF000668E51238 /* Frameworks */,
-				8E2D1B78248CDBC85482673ABE9B0983 /* Resources */,
+				D11B0FBA7A1BA182EBB1DF8D5C55364B /* Headers */,
+				6CB9E8ABC8DFF3D349B0749EC1FEA9EE /* Sources */,
+				717EDCD3F53A959316D854F00E3D9C72 /* Frameworks */,
+				0F8CA29E636603753957FEAC62F2EED0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				16F97AD8C0238F4ACEF55CD4A37EF062 /* PBXTargetDependency */,
+				95586451E967FF1EA8BE0630F0F637B9 /* PBXTargetDependency */,
 			);
-			name = "Pods-JNImagePicker_Example";
-			productName = "Pods-JNImagePicker_Example";
-			productReference = 06CC60215AE279CD7F5972FE81864C10 /* Pods_JNImagePicker_Example.framework */;
+			name = "Pods-JNImagePicker_Tests";
+			productName = Pods_JNImagePicker_Tests;
+			productReference = 602412F3B62040FF3D9850372A3701F3 /* Pods_JNImagePicker_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9DD5914C2A0D7D465AD0AEA5BC24C1D6 /* JNImagePicker */ = {
+		A058979E244E76806B237793495A5BD0 /* Pods-JNImagePicker_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 06BCBCE64A229CF9BA2073ADBE4D52D5 /* Build configuration list for PBXNativeTarget "JNImagePicker" */;
+			buildConfigurationList = 043CF7E5B6BADB84CC7CD3A07D1A96BE /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Example" */;
 			buildPhases = (
-				B468177CC970961A7083A5C57732AD71 /* Headers */,
-				5BB30A02E17A216D3DC98FF513336718 /* Sources */,
-				0F7455E42D3DB880808872E850BF040B /* Frameworks */,
-				A3523170BBEC55161DE1173E4F14016A /* Resources */,
+				D64C4365CA9F1CD659FA89149217F70C /* Headers */,
+				993BB24395A375748783F3A971F2E85C /* Sources */,
+				8D9AA07BE51B264A3C695FDD944BEC7F /* Frameworks */,
+				281C3702D10DED3DC83EBA71AD5A1A20 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CC36B114CE93697BF64854C065BAACB5 /* PBXTargetDependency */,
+			);
+			name = "Pods-JNImagePicker_Example";
+			productName = Pods_JNImagePicker_Example;
+			productReference = CFD0BFD3A38913B577DA208285ECE26D /* Pods_JNImagePicker_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FD34862EB8C83D6D54A2732208A8EBC1 /* JNImagePicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70B1C46BE772F0E450C1B32AA1217A4D /* Build configuration list for PBXNativeTarget "JNImagePicker" */;
+			buildPhases = (
+				9D6DC1EF0519BF13CAE0DF49E01478C5 /* Headers */,
+				9A63991CE947000DE3029DC2B8DC36BB /* Sources */,
+				42CF4F982B32750F26E7CBF931375247 /* Frameworks */,
+				19E5BA937C788D2ABDA8BB264BACFE8F /* Resources */,
 			);
 			buildRules = (
 			);
@@ -458,26 +471,7 @@
 			);
 			name = JNImagePicker;
 			productName = JNImagePicker;
-			productReference = 5821FC04015EB76FEA15613B72D43BDD /* JNImagePicker.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		D14D296377E2D462C310BCAD73380C1A /* Pods-JNImagePicker_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 620E27F4FAC0B1F33D66AA71AA3150A4 /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Tests" */;
-			buildPhases = (
-				348D744085A6585A1F345605E1802C62 /* Headers */,
-				A0ACCD9097ABCF7924D362270ACF152F /* Sources */,
-				A6BC60A20B35BE128C4B6EFE350F85F7 /* Frameworks */,
-				5A0EFCD8F96BD67A25504DD8E3F72539 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B5C1A2AC8C71D132160F4F45D2EEA50C /* PBXTargetDependency */,
-			);
-			name = "Pods-JNImagePicker_Tests";
-			productName = "Pods-JNImagePicker_Tests";
-			productReference = 4726A4D6689D9DBE83F90C1D57993FB2 /* Pods_JNImagePicker_Tests.framework */;
+			productReference = 4AD0E40CC61E67DA9981CA1D3DD3F491 /* JNImagePicker.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -486,116 +480,305 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 1240;
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1430;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = B7EAE15E86DEC200AC4A21F3199CE074 /* Products */;
+			productRefGroup = F943185E0DC65ED46551E663F77873B3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9DD5914C2A0D7D465AD0AEA5BC24C1D6 /* JNImagePicker */,
-				1F337612903E289A13A3BAC90D5ABC0C /* Pods-JNImagePicker_Example */,
-				D14D296377E2D462C310BCAD73380C1A /* Pods-JNImagePicker_Tests */,
+				FD34862EB8C83D6D54A2732208A8EBC1 /* JNImagePicker */,
+				A058979E244E76806B237793495A5BD0 /* Pods-JNImagePicker_Example */,
+				4FAB45E2087B514BD1DE78E6ED914605 /* Pods-JNImagePicker_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5A0EFCD8F96BD67A25504DD8E3F72539 /* Resources */ = {
+		0F8CA29E636603753957FEAC62F2EED0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8E2D1B78248CDBC85482673ABE9B0983 /* Resources */ = {
+		19E5BA937C788D2ABDA8BB264BACFE8F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				713AAA091372A8E53902EB30E661A5AB /* AssetCollectionSelectionTableViewCell.xib in Resources */,
+				BCF692FC8695F76EEB7B6E196AEFBBA4 /* JNCameraCollectionViewCell.xib in Resources */,
+				7A87CD2483D44452B8CBB9F192A67E90 /* JNImageCollectionViewCell.xib in Resources */,
+				59BB90C4ACED4D1731D68F43A475E1C5 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A3523170BBEC55161DE1173E4F14016A /* Resources */ = {
+		281C3702D10DED3DC83EBA71AD5A1A20 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73061C9F1B4C54B583E6016B2F80AD23 /* AssetCollectionSelectionTableViewCell.xib in Resources */,
-				A81F06E95D635AE145D70B350DA477E0 /* JNCameraCollectionViewCell.xib in Resources */,
-				C255D4DBBCFA9DCEDE06E7D56BEBC9D2 /* JNImageCollectionViewCell.xib in Resources */,
-				2838798B6BEB6079E0A454656A2DDAE7 /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0B687BE89177AEA49F717D2865CA57A6 /* Sources */ = {
+		6CB9E8ABC8DFF3D349B0749EC1FEA9EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C049BFD4F9A9613045EBBE818D71F47 /* Pods-JNImagePicker_Example-dummy.m in Sources */,
+				3B8B1F6DE587F4F7A9D48DC14EB6593C /* Pods-JNImagePicker_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5BB30A02E17A216D3DC98FF513336718 /* Sources */ = {
+		993BB24395A375748783F3A971F2E85C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61D59D65E516AE20FFC65BAEBD4D4535 /* AssetCollectionSelectionTableViewCell.swift in Sources */,
-				4893310B26411FC200CC7C5B /* JNImagePickerLocalizationConfiguration.swift in Sources */,
-				80ADF71BB4A9340EA40D59720BB2F76E /* AssetCollectionSelectionViewController.swift in Sources */,
-				09E881F14B7BDF73EC3C88AA9204154D /* CollectionViewRepresentable.swift in Sources */,
-				F688F02165B51EA40B0FD5DDBD6D804D /* JNAsset.swift in Sources */,
-				4F57AB28117BE7D200CC3C25F30388E1 /* JNAssetsManager.swift in Sources */,
-				832441B0ED71E80126B2E2DD11D5B915 /* JNCameraCollectionViewCell.swift in Sources */,
-				6287FD2295CA3369C3F474831A10C3B5 /* JNCameraCollectionViewCellRepresentable.swift in Sources */,
-				C50FF1E8881211FB7AD2576E68AA0922 /* JNCameraPickerViewController.swift in Sources */,
-				C5C8073B0D285350966D29DF84CDF47E /* JNImageCollectionViewCell.swift in Sources */,
-				807728F1A63FBE99F94FFD7175CB0417 /* JNImageCollectionViewCellRepresentable.swift in Sources */,
-				99BBC09FE43FC12E8B6DAFF917A94355 /* JNImagePicker-dummy.m in Sources */,
-				B174399B3160E30DC55E42C30E1FB591 /* JNImagePickerViewController.swift in Sources */,
-				34C85DF7F293162965CA33C21FACEA20 /* JNPhotoGalleryCollectionViewLayout.swift in Sources */,
-				81D6832C5E2E94C51FB856AC380184D2 /* JNPhotoGalleryViewController.swift in Sources */,
-				8882A42816F6FF93409164DD57A10CEB /* JNPhotoGalleryViewModel.swift in Sources */,
+				27D1658F0DF34CC8E2D3ADAE7FFDB86F /* Pods-JNImagePicker_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0ACCD9097ABCF7924D362270ACF152F /* Sources */ = {
+		9A63991CE947000DE3029DC2B8DC36BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				230D4AE378F9835C5AFA702BEC155333 /* Pods-JNImagePicker_Tests-dummy.m in Sources */,
+				BB001B4973F6DC12895B2B22A46557FA /* AssetCollectionSelectionTableViewCell.swift in Sources */,
+				A14E00310D3B5D21016930E42A53CFB0 /* AssetCollectionSelectionViewController.swift in Sources */,
+				BFAAAC173B3E14FC2A0BC6B3C1657477 /* CollectionViewRepresentable.swift in Sources */,
+				AD662CE01A28C5EEBEA70802600D647C /* JNAsset.swift in Sources */,
+				C53D319C4271855ED48B66BE048EF1CA /* JNAssetsManager.swift in Sources */,
+				6814A5BC33329B1DEEAA472F0C6AFCB1 /* JNCameraCollectionViewCell.swift in Sources */,
+				1C57D7744B7605EE0071104FD2600523 /* JNCameraCollectionViewCellRepresentable.swift in Sources */,
+				64020949598DE7366BB40C767904FE17 /* JNCameraPickerViewController.swift in Sources */,
+				A054D7834A793ADA1D27719264238A0B /* JNImageCollectionViewCell.swift in Sources */,
+				DF9C0DC41876D3CBAE959E7840E25AC3 /* JNImageCollectionViewCellRepresentable.swift in Sources */,
+				E034C7CFEFDB60D75A4C1FDD82898CDB /* JNImagePicker-dummy.m in Sources */,
+				48D13523A7A73D15CBCDFF884F3554C9 /* JNImagePickerLocalizationConfiguration.swift in Sources */,
+				7582E2F0A352A92027BE60784949966B /* JNImagePickerViewController.swift in Sources */,
+				6404CA3E0E9292A022BACD3A4C0D1B86 /* JNPhotoGalleryCollectionViewLayout.swift in Sources */,
+				843FE00BF4269BF5EDA3D343DC1ABDB7 /* JNPhotoGalleryViewController.swift in Sources */,
+				275C0B76ABC00A6C49BAD7D4FDB55F01 /* JNPhotoGalleryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		16F97AD8C0238F4ACEF55CD4A37EF062 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = JNImagePicker;
-			target = 9DD5914C2A0D7D465AD0AEA5BC24C1D6 /* JNImagePicker */;
-			targetProxy = 06D55A043FE8055F8B2FA1A2986F2B39 /* PBXContainerItemProxy */;
-		};
-		B5C1A2AC8C71D132160F4F45D2EEA50C /* PBXTargetDependency */ = {
+		95586451E967FF1EA8BE0630F0F637B9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-JNImagePicker_Example";
-			target = 1F337612903E289A13A3BAC90D5ABC0C /* Pods-JNImagePicker_Example */;
-			targetProxy = 9EADA2D675A427D6D4FA60DA95F29EE0 /* PBXContainerItemProxy */;
+			target = A058979E244E76806B237793495A5BD0 /* Pods-JNImagePicker_Example */;
+			targetProxy = B3C3B24B3E456509A49FCC3993233B61 /* PBXContainerItemProxy */;
+		};
+		CC36B114CE93697BF64854C065BAACB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = JNImagePicker;
+			target = FD34862EB8C83D6D54A2732208A8EBC1 /* JNImagePicker */;
+			targetProxy = 182E0DB1878D738FD14368BC27975386 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		07488D4657FB0A78086563621D425F8A /* Debug */ = {
+		021C827BF668212F27E497DF013A6CFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 380AA57F3D32707584413F906A99F9DB /* JNImagePicker.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JNImagePicker/JNImagePicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JNImagePicker/JNImagePicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JNImagePicker/JNImagePicker.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				PRODUCT_MODULE_NAME = JNImagePicker;
+				PRODUCT_NAME = JNImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2CEE353B3E3CCDE60C0C6EA180635164 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08EEB56B7AE6ED4899977B88C3A64B74 /* Pods-JNImagePicker_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		5284AE538E2BFC2D1673C96840F0946E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98EC3C204F44938056ADF8440775EC63 /* Pods-JNImagePicker_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7A14CF7C36AB7F453152A9A5DBBA9753 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF842A6A2FA882E86A5ABB77E9EBA619 /* Pods-JNImagePicker_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8C415CB5BB65602E781B5B5AD55D644B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB1B72D2D6E90AFD080B6CAD95FCD7E7 /* JNImagePicker.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JNImagePicker/JNImagePicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/JNImagePicker/JNImagePicker-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/JNImagePicker/JNImagePicker.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				PRODUCT_MODULE_NAME = JNImagePicker;
+				PRODUCT_NAME = JNImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		903A0004D3E6651EFD5D2E16214D101B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -630,6 +813,108 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		A42D32FE24B52BCFA696B10A5F72A9E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72463270BE4B18F30E4604D485DF33C7 /* Pods-JNImagePicker_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests.modulemap";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -648,285 +933,35 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
-		};
-		0982FE8A75C74ACAEFC492CCF1EF7440 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6D872CC0C679B5BF44DA054AF2EE55C /* Pods-JNImagePicker_Tests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		3A53779F014ED8837511C2C205ECF94F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08BC4C50033F5BE81A27B03496731319 /* Pods-JNImagePicker_Example.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A1962E6FF39BBAC201A2E5DDF99557DF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		B031430C0DE013085A3B36EF6DBB3996 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7548A572F4E47835BBF218E7D92D3E6 /* Pods-JNImagePicker_Example.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Example/Pods-JNImagePicker_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B49F502CE9348634E41ED7B4F27847BA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 919C061217CC795C35E922719B374FFC /* Pods-JNImagePicker_Tests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-JNImagePicker_Tests/Pods-JNImagePicker_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BE47E092AE529490D4C754B0EF678BD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 203E03C13A1441DA43152EA9040F1A32 /* JNImagePicker.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JNImagePicker/JNImagePicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JNImagePicker/JNImagePicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JNImagePicker/JNImagePicker.modulemap";
-				PRODUCT_MODULE_NAME = JNImagePicker;
-				PRODUCT_NAME = JNImagePicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		CAD7390EA6840F73D7E9F6B7F7067BBF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 203E03C13A1441DA43152EA9040F1A32 /* JNImagePicker.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/JNImagePicker/JNImagePicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/JNImagePicker/JNImagePicker-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/JNImagePicker/JNImagePicker.modulemap";
-				PRODUCT_MODULE_NAME = JNImagePicker;
-				PRODUCT_NAME = JNImagePicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		06BCBCE64A229CF9BA2073ADBE4D52D5 /* Build configuration list for PBXNativeTarget "JNImagePicker" */ = {
+		029C055494CE4D8564C728D8C9952CCC /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BE47E092AE529490D4C754B0EF678BD3 /* Debug */,
-				CAD7390EA6840F73D7E9F6B7F7067BBF /* Release */,
+				5284AE538E2BFC2D1673C96840F0946E /* Debug */,
+				A42D32FE24B52BCFA696B10A5F72A9E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		043CF7E5B6BADB84CC7CD3A07D1A96BE /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A14CF7C36AB7F453152A9A5DBBA9753 /* Debug */,
+				2CEE353B3E3CCDE60C0C6EA180635164 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -934,26 +969,17 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07488D4657FB0A78086563621D425F8A /* Debug */,
-				A1962E6FF39BBAC201A2E5DDF99557DF /* Release */,
+				B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */,
+				903A0004D3E6651EFD5D2E16214D101B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		620E27F4FAC0B1F33D66AA71AA3150A4 /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Tests" */ = {
+		70B1C46BE772F0E450C1B32AA1217A4D /* Build configuration list for PBXNativeTarget "JNImagePicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0982FE8A75C74ACAEFC492CCF1EF7440 /* Debug */,
-				B49F502CE9348634E41ED7B4F27847BA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BCFE1F45B0F0A02C6956BAB2595288D8 /* Build configuration list for PBXNativeTarget "Pods-JNImagePicker_Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B031430C0DE013085A3B36EF6DBB3996 /* Debug */,
-				3A53779F014ED8837511C2C205ECF94F /* Release */,
+				8C415CB5BB65602E781B5B5AD55D644B /* Debug */,
+				021C827BF668212F27E497DF013A6CFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

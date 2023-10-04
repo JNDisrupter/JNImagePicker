@@ -35,13 +35,15 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
-    <key>NSCameraUsageDescription</key>
-    <string>Harri Live needs this permission to be able to take photos through your camera</string>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>Harri Live needs this permission to be able to save video recording audio</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Harri Live needs this permission to access your photo library</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Harri Live needs this permission to save images to your camera roll</string>
+	<key>NSCameraUsageDescription</key>
+	<string>JNImagePicker needs this permission to be able to take photos through your camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>JNImagePicker needs this permission to be able to save video recording audio</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>JNImagePicker needs this permission to access your photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>JNImagePicker needs this permission to save images to your camera roll</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>
