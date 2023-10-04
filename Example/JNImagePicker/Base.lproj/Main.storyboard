@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,17 +20,28 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08U-4p-7Qr">
-                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="57.5" y="289" width="260.5" height="34.5"/>
+                                <state key="normal" title="Default Navigation Appearance"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Default Navigation Appearance"/>
                                 <connections>
-                                    <action selector="openJNImagePickerViewController:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dAe-LN-QTJ"/>
+                                    <action selector="openJNImagePickerViewControllerWithDefualtAppearance:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bKF-yC-BQP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hgc-4R-DMN">
+                                <rect key="frame" x="55" y="343.5" width="265" height="34.5"/>
+                                <state key="normal" title="Custom Navigation Appearance"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Custom Navigation Appearance"/>
+                                <connections>
+                                    <action selector="openJNImagePickerViewControllerWithCustomAppearance:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cUD-EB-a4E"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="08U-4p-7Qr" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="96g-aC-WWP"/>
-                            <constraint firstItem="08U-4p-7Qr" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sOD-wB-MUY"/>
+                            <constraint firstItem="08U-4p-7Qr" firstAttribute="bottom" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="-10" id="96g-aC-WWP"/>
+                            <constraint firstItem="08U-4p-7Qr" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="A7b-5h-ilu"/>
+                            <constraint firstItem="Hgc-4R-DMN" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="centerY" constant="10" id="G0r-7J-zGc"/>
+                            <constraint firstItem="Hgc-4R-DMN" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="coF-Gr-E4t"/>
                         </constraints>
                     </view>
                 </viewController>

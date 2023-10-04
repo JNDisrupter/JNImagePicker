@@ -77,11 +77,13 @@ open class JNImagePickerViewController: UINavigationController {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        // Set modal transition style
-        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        // Set hides bottom bar when pushed
+        self.hidesBottomBarWhenPushed = true
         
-        // Set modal presentation style
-        self.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        // Disable dismiss gesture for presented view controller in iOS 13
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
         
         // This controls whether this view controller takes over control of the status bar's appearance when presented non-full screen on another view controller
         self.modalPresentationCapturesStatusBarAppearance = true
@@ -93,11 +95,13 @@ open class JNImagePickerViewController: UINavigationController {
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        // Set modal transition style
-        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        // Set hides bottom bar when pushed
+        self.hidesBottomBarWhenPushed = true
         
-        // Set modal presentation style
-        self.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        // Disable dismiss gesture for presented view controller in iOS 13
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
         
         // This controls whether this view controller takes over control of the status bar's appearance when presented non-full screen on another view controller
         self.modalPresentationCapturesStatusBarAppearance = true
@@ -109,11 +113,13 @@ open class JNImagePickerViewController: UINavigationController {
     public init() {
         super.init(nibName: nil, bundle: nil)
         
-        // Set modal transition style
-        self.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        // Set hides bottom bar when pushed
+        self.hidesBottomBarWhenPushed = true
         
-        // Set modal presentation style
-        self.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+        // Disable dismiss gesture for presented view controller in iOS 13
+        if #available(iOS 13.0, *) {
+            self.isModalInPresentation = true
+        }
         
         // This controls whether this view controller takes over control of the status bar's appearance when presented non-full screen on another view controller
         self.modalPresentationCapturesStatusBarAppearance = true
@@ -130,6 +136,17 @@ open class JNImagePickerViewController: UINavigationController {
         self.setupRootViewController()
     }
     
+    /// Preferred Status Bar Style
+    open override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
+    /// Prefers Status Bar Hidden
+    open override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    // MARK: Navigation Bar
     /**
      Setup root view controller
      */
@@ -489,6 +506,13 @@ extension JNImagePickerViewController: JNPhotoGalleryViewControllerDelegate {
      */
     public func galleryViewController(didExceedMaximumTotalMediaSizesFor mediaType: JNImagePickerViewController.MediaType, with maximumTotalSizes: Double, actualMediaSizes: Double, selectedMediaCount: Int) {
         self.pickerDelegate?.imagePickerViewController(didExceedMaximumTotalMediaSizesFor: mediaType, with: maximumTotalSizes, actualMediaSizes: actualMediaSizes, selectedMediaCount: selectedMediaCount)
+    }
+    
+    /**
+     Did cancel picker.
+     */
+    public func galleryViewControllerDidCancelPicker() {
+        self.pickerDelegate?.imagePickerViewControllerDidCancelPicker()
     }
 }
 
