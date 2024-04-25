@@ -6,13 +6,14 @@
 [![Platform](https://img.shields.io/cocoapods/p/JNImagePicker.svg?style=flat)](https://cocoapods.org/pods/JNImagePicker)
 
 ## Preview
-<img src="https://github.com/JNDisrupter/JNImagePicker/blob/update-readmeFile/Images/recentContent.png" width="280"/> <img src="https://github.com/JNDisrupter/JNImagePicker/blob/update-readmeFile/Images/favoriteContent.png" width="280"/> <img src="https://github.com/JNDisrupter/JNImagePicker/blob/update-readmeFile/Images/albumsSwitcher.png" width="280"/> <img src="https://github.com/JNDisrupter/JNImagePicker/blob/update-readmeFile/Images/selections.png" width="280"/>
+<img src="https://github.com/JNDisrupter/JNImagePicker/blob/master/Images/recentContent.png" width="280"/> <img src="https://github.com/JNDisrupter/JNImagePicker/blob/master/Images/favoriteContent.png" width="280"/> <img src="https://github.com/JNDisrupter/JNImagePicker/blob/master/Images/albumsSwitcher.png" width="280"/> <img src="https://github.com/JNDisrupter/JNImagePicker/blob/master/Images/selections.png" width="280"/>
+
 
 ## Requirements
 
 - Xcode 9
-- iOS 9.0+
-- Swift 4.2+
+- iOS 11.0+
+- Swift 5.7+
 
 ## Installation
 
