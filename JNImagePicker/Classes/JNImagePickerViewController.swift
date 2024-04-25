@@ -154,33 +154,11 @@ open class JNImagePickerViewController: UINavigationController {
         
         func openCamera() {
             self.setNavigationBarHidden(true, animated: false)
-            let imagePickerViewController = UIImagePickerController()
-            imagePickerViewController.delegate = self
-            imagePickerViewController.sourceType = .camera
-            if self.mediaType == JNImagePickerViewController.MediaType.all {
-                imagePickerViewController.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-            } else if self.mediaType == JNImagePickerViewController.MediaType.image {
-                imagePickerViewController.mediaTypes = [kUTTypeImage as String]
-            } else {
-                imagePickerViewController.mediaTypes = [kUTTypeMovie as String]
-            }
             
-            imagePickerViewController.allowsEditing = self.allowEditing
-            
-            // First, add the view of the child to the view of the parent
-            self.view.addSubview(imagePickerViewController.view)
-            imagePickerViewController.view.translatesAutoresizingMaskIntoConstraints = false
-            
-            imagePickerViewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-            imagePickerViewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-            imagePickerViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-            imagePickerViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-            
-            // Then, add the child to the parent
-            self.addChild(imagePickerViewController)
-            
-            // Finally, notify the child that it was moved to a parent
-            imagePickerViewController.didMove(toParent: self)
+            // Set default view controller as the root view controller
+            let defaultViewController = DefaultViewController()
+            defaultViewController.viewType = .camera(mediaType: self.mediaType, allowEditing: self.allowEditing)
+            self.setViewControllers([defaultViewController], animated: false)
         }
         
         func openGallery() {
@@ -558,12 +536,27 @@ public protocol JNImagePickerViewControllerDelegate: NSObjectProtocol {
 
 /// Default view controller
 class DefaultViewController: UIViewController {
-           
+        
+    /// View Type
+    enum ViewType {
+        case blank
+        case camera(mediaType: JNImagePickerViewController.MediaType, allowEditing: Bool)
+    }
+    
+    // View type
+    var viewType: ViewType = .blank
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         // Init navigation ietm
         //self.initNavigationItem()
+        
+        if case ViewType.camera(let mediaType, let allowEditing) = self.viewType {
+            
+            // Show camera
+            self.showCamera(mediaType: mediaType, allowEditing: allowEditing)
+        }
     }
     
     // MARK: - Navigation item
@@ -582,6 +575,46 @@ class DefaultViewController: UIViewController {
         }
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: cancelBarButtonItemTitle, style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.didClickCancelButton))
+    }
+    
+    /**
+     Show Camera
+     - Parameter mediaType: Media type
+     - Parameter allowEditting: flag to indicate if editting is allowed
+     */
+    private func showCamera(mediaType: JNImagePickerViewController.MediaType, allowEditing: Bool) {
+
+        let imagePickerViewController = UIImagePickerController()
+        
+        if let jnImagePickerViewController = self.navigationController as? JNImagePickerViewController {
+            imagePickerViewController.delegate = jnImagePickerViewController
+        }
+        
+        imagePickerViewController.sourceType = .camera
+        if mediaType == JNImagePickerViewController.MediaType.all {
+            imagePickerViewController.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        } else if mediaType == JNImagePickerViewController.MediaType.image {
+            imagePickerViewController.mediaTypes = [kUTTypeImage as String]
+        } else {
+            imagePickerViewController.mediaTypes = [kUTTypeMovie as String]
+        }
+        
+        imagePickerViewController.allowsEditing = allowEditing
+        
+        // First, add the view of the child to the view of the parent
+        self.view.addSubview(imagePickerViewController.view)
+        imagePickerViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        imagePickerViewController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        imagePickerViewController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        imagePickerViewController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        imagePickerViewController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        
+        // Then, add the child to the parent
+        self.addChild(imagePickerViewController)
+        
+        // Finally, notify the child that it was moved to a parent
+        imagePickerViewController.didMove(toParent: self)
     }
     
     /**

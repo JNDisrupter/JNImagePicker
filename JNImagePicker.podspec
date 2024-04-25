@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name                                        = 'JNImagePicker'
-  s.version                                     = '0.3.0'
+  s.version                                     = '0.4.0'
   s.summary                                     = 'JNImagePicker'
   s.description                                 = 'Image picker for images and viewdes'
   s.homepage                                    = 'https://github.com/JNDisrupter'
@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target                       = '11.0'
   s.source_files                                = 'JNImagePicker/Classes/**/*'
   s.resources                                   = 'JNImagePicker/**/*.{png,jpeg,jpg,storyboard,xib,xcassets,ttf}'
-  s.swift_version                               = '5.7'
+  s.swift_version                               = '5.10'
 end
