@@ -129,9 +129,6 @@ class JNPhotoGalleryViewController: UIViewController {
         // Init assets manager
         self.assetsManager = JNAssetsManager()
         
-        // Register for PHPhotoLibraryChangeObserver
-        PHPhotoLibrary.shared().register(self)
-        
         // Get collections list
         self.collectionsList = self.assetsManager.getAssetCollections(subTypes: self.assetGroupTypes, options: nil)
         self.selectedAssetCollection = self.collectionsList.first
@@ -159,6 +156,9 @@ class JNPhotoGalleryViewController: UIViewController {
         
         // Init navigation item
         self.initNavigationItem()
+        
+        // Register for PHPhotoLibraryChangeObserver
+        PHPhotoLibrary.shared().register(self)
     }
     
     /**
