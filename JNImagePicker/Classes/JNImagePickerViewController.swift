@@ -259,11 +259,15 @@ open class JNImagePickerViewController: UINavigationController {
             // Check permission
             JNAssetsManager.checkCameraPermission { (granted) in
                 if granted {
-                    if self.mediaType == JNImagePickerViewController.MediaType.video {
+                    if self.mediaType != JNImagePickerViewController.MediaType.image {
                         JNAssetsManager.checkGalleryPermission { (granted) in
                             if granted {
                                 DispatchQueue.main.async {
                                     openCamera()
+                                }
+                            }else {
+                                DispatchQueue.main.async {
+                                    showPhotoSettingsAlertViewController()
                                 }
                             }
                         }
@@ -415,7 +419,12 @@ extension JNImagePickerViewController: UIImagePickerControllerDelegate, UINaviga
                                     
                                     // Create JNAsset
                                     var jnAsset = JNAsset(originalAsset: newAsset, assetExtension: assetExtension)
-                                    do { jnAsset.assetData = try Data(contentsOf: videoURL) } catch { }
+                                    do {
+                                        jnAsset.assetData = try Data(contentsOf: videoURL)
+                                    } catch {
+                                        // Failed to selecte asset
+                                        self.pickerDelegate?.imagePickerViewController(pickerController: self, failedToSelectAsset: error)
+                                    }
                                     
                                     // Get asset data
                                     if let assetData = jnAsset.assetData {
