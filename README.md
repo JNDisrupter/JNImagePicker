@@ -12,17 +12,13 @@
 ## Requirements
 
 - Xcode 15.3
-- iOS 11.0+
+- iOS 12.0+
 - Swift 5.10+
 
 ## Installation
 
-JNImagePicker is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+JNImagePicker support SwiftPM. To use SwiftPM, you should use Xcode 15.3 to open your project. Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter [JNImagePicker repo's URL](https://github.com/JNDisrupter/JNImagePicker.git)
 
-```ruby
-pod 'JNImagePicker'
-```
 ## Usage
 
 - Import **JNImagePicker module**
