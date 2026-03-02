@@ -1,7 +1,6 @@
 # JNImagePicker
 
 [![CI Status](https://img.shields.io/travis/mohammadnabulsi/JNImagePicker.svg?style=flat)](https://travis-ci.org/mohammadnabulsi/JNImagePicker)
-[![Version](https://img.shields.io/cocoapods/v/JNImagePicker.svg?style=flat)](https://cocoapods.org/pods/JNImagePicker)
 [![License](https://img.shields.io/cocoapods/l/JNImagePicker.svg?style=flat)](https://cocoapods.org/pods/JNImagePicker)
 [![Platform](https://img.shields.io/cocoapods/p/JNImagePicker.svg?style=flat)](https://cocoapods.org/pods/JNImagePicker)
 
@@ -11,18 +10,14 @@
 
 ## Requirements
 
-- Xcode 15.3
-- iOS 11.0+
+- iOS 12.0+ / macOS 15.7+
+- Xcode 26+
 - Swift 5.10+
 
-## Installation
+## Installation with Swift Package Manager
 
-JNImagePicker is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+JNImagePicker support SwiftPM. To use SwiftPM, you should use Xcode 26 to open your project. Click `File` -> `Swift Packages` -> `Add Package Dependency`, enter [JNImagePicker repo's URL](https://github.com/JNDisrupter/JNImagePicker.git)
 
-```ruby
-pod 'JNImagePicker'
-```
 ## Usage
 
 - Import **JNImagePicker module**
@@ -84,9 +79,6 @@ self.present(imagePickerViewController, animated: true, completion: nil)
     This is to indicate that the total size of the selected media is greater than the maximum
     - ***imagePickerViewControllerDidCancelPicker:***
     This is to inform the view that the user clicked on **cancel** button
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Author
 

@@ -1,6 +1,0 @@
-framework module JNImagePicker {
-  umbrella header "JNImagePicker-umbrella.h"
-
-  export *
-  module * { export * }
-}
