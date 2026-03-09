@@ -51,7 +51,7 @@ public struct JNImagePickerLocalizationConfiguration {
         var appName = ""
         
         // Set App Name
-        if let name = Bundle.module.infoDictionary!["CFBundleName"] as? String {
+        if let name = Bundle.main.infoDictionary!["CFBundleName"] as? String {
             appName = name
         }
         
@@ -68,7 +68,7 @@ public struct JNImagePickerLocalizationConfiguration {
         var appName = ""
         
         // Set App Name
-        if let name = Bundle.module.infoDictionary!["CFBundleName"] as? String {
+        if let name = Bundle.main.infoDictionary!["CFBundleName"] as? String {
             appName = name
         }
         
@@ -130,7 +130,7 @@ extension JNImagePickerLocalizationConfiguration {
             var appName = ""
             
             // Set App Name
-            if let name = Bundle.module.infoDictionary!["CFBundleName"] as? String {
+            if let name = Bundle.main.infoDictionary!["CFBundleName"] as? String {
                 appName = name
             }
             
